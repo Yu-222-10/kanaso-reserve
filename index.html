@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>login</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <!DOCTYPE html>
+　　<html lang="en">
+    <script src="https://accounts.google.com/gsi/client" async></script>
+
+    <script>
+      function decodeJWT(token) {
+
+        let base64Url = token.split(".")[1];
+        let base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+        let jsonPayload = decodeURIComponent(
+          atob(base64)
+            .split("")
+            .map(function (c) {
+              return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+            })
+            .join("")
+        );
+        return JSON.parse(jsonPayload);
+      }
+
+      function handleCredentialResponse(response) {
+
+        console.log("Encoded JWT ID token: " + response.credential);
+
+        const responsePayload = decodeJWT(response.credential);
+
+        console.log("Decoded JWT ID token fields:");
+        console.log("  Full Name: " + responsePayload.name);
+        console.log("  Given Name: " + responsePayload.given_name);
+        console.log("  Family Name: " + responsePayload.family_name);
+        console.log("  Unique ID: " + responsePayload.sub);
+        console.log("  Profile image URL: " + responsePayload.picture);
+        console.log("  Email: " + responsePayload.email);
+        
+        // ★ここに1行追加！ログインが成功したら、マイページに画面を切り替える
+        window.location.href = 'mypage.html';
+      }
+    </script>
+  </head>
+
+  <body>
+  　
+    <div class="top-wrapper">
+      <div class="container">
+     <h2>かなそう学習室予約</h2>  
+     <!-- g_id_onload contains Google Identity Services settings -->
+    <div
+      id="g_id_onload"
+      data-auto_prompt="false"
+      data-callback="handleCredentialResponse"
+      data-client_id="PUT_YOUR_WEB_CLIENT_ID_HERE"
+    ></div>
+    <!-- g_id_signin places the button on a page and supports customization -->
+  
+
+         <div class="btn-wrapper">
+         <div class="g_id_signin"></div>
+         
+         </div>
+      </div>
+    </div>
+
+  </body>
+  
+</html>
