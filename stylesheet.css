@@ -286,21 +286,21 @@ input[type="submit"]:active {
 @media (max-width: 1000px) {
 
   h1 {
-    font-size: 22px;
+    font-size: 24px;
   }
   h2 {
-    font-size: 19px;
+    font-size: 21px;
   }
 }
 
 /* スマホ向けレイアウト */
 @media (max-width: 670px) {
 h1 {
-    font-size: 20px;
+    font-size: 22px;
   }
   
   h2 {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   /* スマホのときは真ん中寄せにしてスッキリ見せる */
