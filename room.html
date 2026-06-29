@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>教室一覧</title>
+  <!-- ここでFont Awesomeを読み込んでください -->
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+  <!-- ここにコードを書いていきましょう -->
+  <div class="room-wrapper">
+   <div class="container room-container">
+    <h2 id="selected-date"></h2>
+    <details>
+     <summary>3F</summary>
+      <table class="room">
+       <tr>
+       <th>教室名</th>
+       <th>昼休み</th>
+       <th>放課後</th>
+       </tr>
+       <tr>
+        <td>301</td>
+        <td id="301-lunch" class="available" onclick="goReservation('301', '昼休み')">〇</td>
+        <td id="301-after" class="available" onclick="goReservation('301', '放課後')">〇</td>
+       </tr>
+      </table>
+    </details>
+   
+    <details>
+    <summary>4F</summary>
+     <table class="room">
+       <tr>
+       <th>教室名</th>
+       <th>昼休み</th>
+       <th>放課後</th>
+       </tr>
+       <tr>
+        <td>401</td>
+        <td id="401-lunch" class="available" onclick="goReservation('401', '昼休み')">〇</td>
+        <td id="401-after" class="available" onclick="goReservation('401', '放課後')">×</td>
+       </tr>
+      </table>
+   </details>
+   
+   <details>
+    <summary>5F</summary>
+      <table class="room">
+       <tr>
+       <th>教室名</th>
+       <th>昼休み</th>
+       <th>放課後</th>
+       </tr>
+       <tr>
+        <td>501</td>
+        <td id="501-lunch" class="available" onclick="goReservation('501', '昼休み')">×</td>
+        <td id="501-after" class="available" onclick="goReservation('501', '放課後')">×</td>
+       </tr>
+       <tr>
+        <td>702</td>
+        <td id="502-lunch" class="available" onclick="goReservation('502', '昼休み')">〇</td>
+        <td id="502-after" class="available" onclick="goReservation('502', '放課後')">×</td>
+       </tr>
+       <tr>
+        <td>703</td>
+        <td id="503-lunch" class="available" onclick="goReservation('503', '昼休み')">〇</td>
+        <td id="503-after" class="available" onclick="goReservation('503', '放課後')">〇</td>
+       </tr>
+       <tr>
+        <td>504</td>
+        <td id="504-lunch" class="available" onclick="goReservation('504', '昼休み')">〇</td>
+        <td id="504-after" class="available" onclick="goReservation('504', '放課後')">×</td>
+       </tr>
+       <tr>
+        <td>505</td>
+        <td id="505-lunch" class="available" onclick="goReservation('505', '昼休み')">〇</td>
+        <td id="505-after" class="available" onclick="goReservation('505', '放課後')">×</td>
+       </tr>
+       <tr>
+        <td>506</td>
+        <td id="506-lunch" class="available" onclick="goReservation('506', '昼休み')">×</td>
+        <td id="506-after" class="available" onclick="goReservation('506', '放課後')">×</td>
+       </tr>
+       <tr>
+        <td>507</td>
+        <td id="507-lunch" class="available" onclick="goReservation('507', '昼休み')">×</td>
+        <td id="507-after" class="available" onclick="goReservation('507', '放課後')">〇</td>
+       </tr>
+       <tr>
+        <td>508</td>
+        <td id="508-lunch" class="available" onclick="goReservation('508', '昼休み')">〇</td>
+        <td id="508-after" class="available" onclick="goReservation('508', '放課後')">×</td>
+       </tr>
+     </table>
+   </details>
+   
+   <details>
+    <summary>6F</summary>
+     <table class="room">
+       <tr>
+       <th>教室名</th>
+       <th>昼休み</th>
+       <th>放課後</th>
+       </tr>
+       <tr>
+        <td>601</td>
+        <td id="601-lunch" class="available" onclick="goReservation('601', '昼休み')">〇</td>
+        <td id="601-after" class="available" onclick="goReservation('601', '放課後')">×</td>
+       </tr>
+     </table>
+   </details>
+   
+   <details>
+    <summary>7F</summary>
+     <table class="room">
+       <tr>
+       <th>教室名</th>
+       <th>昼休み</th>
+       <th>放課後</th>
+       </tr>
+       <tr>
+        <td>701</td>
+        <td id="701-lunch" class="available" onclick="goReservation('701', '昼休み')">〇</td>
+        <td id="701-after" class="available" onclick="goReservation('701', '放課後')">×</td>
+       </tr>
+       <tr>
+        <td>702</td>
+        <td id="702-lunch" class="available" onclick="goReservation('702', '昼休み')">〇</td>
+        <td id="702-after" class="available" onclick="goReservation('702', '放課後')">〇</td>
+       </tr>
+       <tr>
+        <td>703</td>
+        <td id="703-lunch" class="available" onclick="goReservation('703', '昼休み')">〇</td>
+        <td id="703-after" class="available" onclick="goReservation('703', '放課後')">×</td>
+       </tr>
+       <tr>
+        <td>704</td>
+        <td id="704-lunch" class="available" onclick="goReservation('704', '昼休み')">×</td>
+        <td id="704-after" class="available" onclick="goReservation('704', '放課後')">〇</td>
+       </tr>
+       <tr>
+        <td>705</td>
+        <td id="705-lunch" class="available" onclick="goReservation('705', '昼休み')">〇</td>
+        <td id="705-after" class="available" onclick="goReservation('705', '放課後')">〇</td>
+       </tr>
+       <tr>
+        <td>706</td>
+        <td id="706-lunch" class="available" onclick="goReservation('706', '昼休み')">〇</td>
+        <td id="706-after" class="available" onclick="goReservation('706', '放課後')">×</td>
+       </tr>
+       <tr>
+        <td>707</td>
+        <td id="707-lunch" class="available" onclick="goReservation('707', '昼休み')">〇</td>
+        <td id="707-after" class="available" onclick="goReservation('707', '放課後')">×</td>
+       </tr>
+     </table>
+   </details>
+   
+   <details>
+    <summary>8F</summary>
+      <table class="room">
+       <tr>
+       <th>教室名</th>
+       <th>昼休み</th>
+       <th>放課後</th>
+       </tr>
+       <tr>
+        <td>801</td>
+        <td id="801-lunch" class="available" onclick="goReservation('801', '昼休み')">×</td>
+        <td id="801-after" class="available" onclick="goReservation('801', '放課後')">×</td>
+       </tr>
+      </table>
+   </details>
+   
+   <details>
+    <summary>9F</summary>
+     <table class="room">
+       <tr>
+       <th>教室名</th>
+       <th>昼休み</th>
+       <th>放課後</th>
+       </tr>
+       <tr>
+        <td>901</td>
+        <td id="901-after" class="available" onclick="goReservation('901', '昼休み')">〇</td>
+        <td id="901-after" class="available" onclick="goReservation('901', '放課後')">×</td>
+       </tr>
+       <tr>
+        <tr>
+        <td>902</td>
+        <td id="902-lunch" class="available" onclick="goReservation('902', '昼休み')">〇</td>
+        <td id="902-after" class="available" onclick="goReservation('902', '放課後')">〇</td>
+       </tr>
+     </table>
+   </details>
+  
+   
+   <details>
+    <summary>10F</summary>
+    <table class="room">
+     <tr>
+       <th>教室名</th>
+       <th>昼休み</th>
+       <th>放課後</th>
+       </tr>
+       <tr>
+        <td>01</td>
+        <td id="01-lunch" class="available" onclick="goReservation('01', '昼休み')">〇</td>
+        <td id="01-after" class="available" onclick="goReservation('01', '放課後')">〇</td>
+       </tr>
+     </table>  
+   </details>
+    <a href="javascript:history.back()">戻る</a>
+  </div>
+ </div>
+</body>
+<script src="room.js"></script>
+</html>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予約</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="responsive.css">
+  </head>
+  <body>
+    
+  <div class="top-wrapper">
+   <div class="container">
+     <h2 id="yoyaku-info">読み込み中...</h2>
+
+     <form id="reserve-form">
+      <h2>団体名</h2>
+      <input type="text" id="name" name="name" required>
+      <p><input type= "submit" value="予約する" ></p>
+      <a href="javascript:history.back()">戻る</a>
+     </form>
+     
+    </div>
+   </div>
+
+
+   <script>
+    // URLの ?year=2026&month=5&day=20&room=501... を解析
+    const params = new URLSearchParams(window.location.search);
+    const dateStr = `${params.get('month')}月${params.get('day')}日`;
+    const room = params.get('room');
+    const time = params.get('time');
+
+    // 画面のタイトルを書き換える
+    document.getElementById('yoyaku-info').innerText = `${dateStr} ${time} ${room}`;
+
+    // 「予約する」ボタンが押された時の動き
+    document.getElementById('reserve-form').onsubmit = function(e) {
+        e.preventDefault(); // ページが勝手に切り替わるのを防ぐ
+        
+        const groupName = document.getElementById('name').value;
+        
+        // 完了画面 (end.html) にすべての情報を引き継いで移動
+        location.href = `end.html?date=${dateStr}&room=${room}&time=${time}&name=${groupName}`;
+    };
+  </script>
+
+  </body>
+ </html> 

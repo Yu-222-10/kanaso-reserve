@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Progate</title>
+    <link rel="stylesheet" href="stylesheet.css">
+  </head>
+  <body>
+    <!-- ここからHTMLを書き始めてください -->
+   <div class="top-wrapper">  
+    <div class="container">
+     <h>予約が完了しました</h>
+     <h3>日程</h3>
+     <h2 id="display-date">--</h2>
+     <h3>教室名</h3>
+     <h2 id="display-room">--</h2>
+     <h3>団体名</h3>
+     <h2 id="display-name">--</h2>
+     <a href="mypage.html" class="btn start">トップへ戻る</a>
+    </div>
+   </div>
+
+  <script>
+    // 1. URLの「?date=...&room=...&name=...」を解析する
+    const params = new URLSearchParams(window.location.search);
+
+    // 2. メモ（パラメータ）からそれぞれのデータを取り出す
+    
+    const dateStr = params.get('date');
+    const room = params.get('room');
+    const time = params.get('time');
+    const name = params.get('name');
+
+    // 3. HTMLの各要素を、取り出したデータに書き換える
+    if (dateStr && time) {
+        document.getElementById('display-date').innerText = `${dateStr} ${time}`;
+    }
+    if (room) {
+        document.getElementById('display-room').innerText = `${room}`;
+    }
+    if (name) {
+        document.getElementById('display-name').innerText = name;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>教室一覧</title>
+  <!-- ここでFont Awesomeを読み込んでください -->
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+  <!-- ここにコードを書いていきましょう -->
+  <div class="room-wrapper">
+   <div class="container room-container">
+    <h2 id="selected-date"></h2>
+    <details>
+     <summary>3F</summary>
+      
+    </details>
+   
+    <details>
+    <summary>4F</summary>
+     <ul></ul>
+   </details>
+   
+   <details>
+    <summary>5F</summary>
+      <table class="room">
+       <tr>
+       <th>教室名</th>
+       <th>昼休み</th>
+       <th>放課後</th>
+       </tr>
+       <tr>
+        <td>501</td>
+        <td id="501-lunch" class="available" onclick="goReservation('501', '昼休み')">〇</td>
+        <td id="501-after" class="available" onclick="goReservation('501', '放課後')">×</td>
+       </tr>
+       <tr>
+        <td>502</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>
+       <tr>
+        <td>503</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>
+       <tr>
+        <td>504</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>
+       <tr>
+        <td>505</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>
+       <tr>
+        <td>506</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>     
+       <tr>
+        <td>507</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>    
+       <tr>
+        <td>508</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr> 
+     </table>
+   </details>
+   
+   <details>
+    <summary>6F</summary>
+     <table class="room">
+       <tr>
+       <th>教室名</th>
+       <th>昼休み</th>
+       <th>放課後</th>
+       </tr>
+       <tr>
+        <td>601</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>
+     </table>
+   </details>
+   
+   <details>
+    <summary>7F</summary>
+     <table class="room">
+       <tr>
+       <th>教室名</th>
+       <th>昼休み</th>
+       <th>放課後</th>
+       </tr>
+       <tr>
+        <td>701</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>
+       <tr>
+        <td>702</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>
+       <tr>
+        <td>703</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>
+       <tr>
+        <td>704</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>
+       <tr>
+        <td>705</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>
+       <tr>
+        <td>706</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>     
+       <tr>
+        <td>707</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>    
+     </table>
+   </details>
+   
+   <details>
+    <summary>8F</summary>
+      <ul></ul>
+   </details>
+   
+   <details>
+    <summary>9F</summary>
+     <table class="room">
+       <tr>
+       <th>教室名</th>
+       <th>昼休み</th>
+       <th>放課後</th>
+       </tr>
+       <tr>
+        <td>901</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>
+       <tr>
+        <td>902</td>
+        <td>〇</td>
+        <td>×</td>
+       </tr>
+     </table>
+   </details>
+  
+   
+   <details>
+    <summary>10F</summary>
+     
+   </details>
+  </div>
+ </div>
+</body>
+<script src="room.js"></script>
+</html>

@@ -1,0 +1,422 @@
+html, body,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6, p, div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN W3', sans-serif;
+  
+}
+
+/* 幅*/
+
+ .container, 
+.c-wrapper, 
+.room-container {
+  width: 100%;
+  max-width: 600px;        /* 💡 全画面の最大幅を600pxに統一！ */
+  margin: 40px auto;       /* 上下に隙間を作り、左右は真ん中寄せ */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;     /* 角を丸く */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05); /* 優しい影 */
+  text-align: center;
+}
+  .top-wrapper {
+  padding: 100px 0 100px 0;
+  color: white;
+  background-size: cover;
+  text-align: center;
+}
+.container {
+  height: auto;            /* 💡 固定の300pxを廃止して、中身に合わせる */
+}
+
+
+h1 {
+   color:#6089ab;
+}
+
+h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  text-align: ; /* ラベルっぽく左寄せ */
+}
+.start {
+  background-color:#5a87ab;/* オレンジ色（好きな色に変えてね） */
+  color: white;              /* 文字の色を白にする */
+  border: none;              /* 枠線を消す */
+}
+
+/* マウスを乗せた時の色も変えるとプロっぽい！ */
+.start:hover {
+  background-color:#376992 /*  */
+}
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box; /* 幅をはみ出さないようにする */
+}
+
+  .btn {
+   display: inline-block;
+   width: 100%;            /* 💡 親要素（wrapper）の幅いっぱいに広げる */
+   max-width: 280px;       /* 💡 広がりすぎないようにボタンの横幅を固定して揃える */
+   padding: 12px 0;        /* 💡 上下に程よい高さを出す（左右は0でOK） */
+   color: #ffffff;
+   font-weight: bold;
+   text-decoration: none;  /* リンクの下線を消す */
+   text-align: center;
+   border-radius: 6px;     /* 角を丸くする */
+   box-sizing: border-box; /* paddingを含めたサイズ計算にする */
+   opacity: 0.9;
+   transition: all 0.2s ease; /* なめらかに色を変える */
+
+}
+.btn:hover{
+  opacity: 1;
+  transform: translateY(-1px); /* ほんの少し上に浮き上がらせる */
+  box-shadow: 0 4px 12px rgba(119, 157, 218, 0.3); /* 軽い影をつける */
+}
+.btn-wrapper {
+  display: flex;
+  flex-direction: column; /* 💡 縦に並べる */
+  align-items: center;    /* 💡 真ん中に揃える */
+  gap: 15px;              /* 💡 ボタン同士の間隔を15px空ける */
+  margin-top: 30px;
+  width: 100%;            /* 全体の横幅を確保 */
+}
+
+.signup{
+  background-color: #779dda;
+}
+
+/* 部屋 room.html*/
+.room-container {
+  height: auto;
+  text-align: left;
+}
+.room-wrapper h2 {
+  
+  font-size: 40px;
+}
+.room-wrapper summary {
+  text-align: left;
+  width: 90%;
+  height: 50px;
+  font-size: 40px;
+  color: #82a2bc;
+}
+.room-wrapper details ul {
+  font-size: 30px;
+
+}
+
+.room {
+  width: 90%;
+  border-collapse: collapse;
+  text-align: center;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+.room th {
+  padding: 10px;
+  border-bottom: solid 3px;
+  color: #778ca3;
+}
+.room td {
+  padding: 10px;
+  border-bottom: solid 1px #778ca3;
+  
+}
+.room td.available:hover {
+  background-color: #f0f7ff; /* マウスを乗せたときに少し青くして反応をわかりやすく */
+}
+
+
+
+/* カレンダー*/
+.c-wrapper{
+    max-width: 600px;
+    margin: 0 auto;
+    color: #666;
+}
+#c-header {
+    text-align: center;
+    font-size: 24px;
+    width: 100%;
+    margin: 1rem 0 0;
+}
+#calendar {
+    text-align: center;
+    width: 100%;
+}
+.c-wrapper table {
+    outline: 2px solid #ddd;
+    border-collapse: collapse;
+    width: 100%;
+}
+.c-wrapper th {
+    color: #000;
+}
+.c-wrapper th, td {
+    outline: 1px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+/*日曜日*/
+.c-wrapper td:first-child {
+    color: red;
+}
+/*土曜日*/
+.c-wrapper td:last-child {
+    color: blue;
+}
+/*前後月の日付*/
+.c-wrapper td.disabled {
+    color: #ccc;
+}
+/*本日*/
+.c-wrapper td.today {
+    background-color: #d58895;
+    color: #fff;
+}
+
+
+
+
+/*ボタン*/
+#next-prev-button {
+    position: relative;
+}
+#next-prev-button button{
+    cursor: pointer;
+    background: #d6bd94;
+    color: #fff;
+    border: 1px solid #B78D4A;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem 0;
+}
+#next-prev-button button:hover{
+    background-color: #D4BB92;
+    border-color: #D4BB92;
+}
+#prev {
+    float: left;
+}
+#next {
+    float: right;
+}
+
+/* ==========================================
+   戻るボタン（aタグ）のスタイル
+   ========================================== */
+a[href="javascript:history.back()"] {
+  display: inline-block;
+  padding: 10px 24px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #778ca3;          /* 落ち着いたグレーブルーの文字 */
+  text-decoration: none;   /* 下線を消す */
+  background-color: #f5f6fa;/* 薄いグレーの背景 */
+  border: 1px solid #dcdde1;/* 目立たない薄い枠線 */
+  border-radius: 6px;      /* 少し角を丸く */
+  cursor: pointer;
+  transition: all 0.2s ease; /* なめらかに色を変える */
+}
+
+/* マウスを乗せた（ホバー）ときの動き */
+a[href="javascript:history.back()"]:hover {
+  background-color: #dcdde1; /* 背景を少し濃くする */
+  color: #2f3640;            /* 文字をクッキリさせる */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* ほんの少し浮き上がらせる */
+}
+
+/* ==========================================
+   予約するボタン（submitボタン）のスタイル
+   ========================================== */
+input[type="submit"] {
+  display: inline-block;
+  width: 100%;             /* 横幅いっぱいに広げて押しやすく */
+  max-width: 300px;        /* 広がりすぎないように制限 */
+  padding: 12px 24px;      /* 上下に程よい余裕を持たせる */
+  margin-top: 20px;
+  font-size: 18px;         /* 文字を少し大きめにして目立たせる */
+  font-weight: bold;
+  color: #ffffff;          /* 文字色は白 */
+  background-color: #779dda;/* あなたのログイン画面と同じ綺麗な青色 */
+  border: none;            /* 枠線は消してスッキリ */
+  border-radius: 6px;      /* 角を丸くして今風のデザインに */
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(119, 157, 218, 0.3); /* ボタンと同系色の軽い影 */
+  transition: all 0.2s ease; /* なめらかに色を変える */
+}
+
+/* マウスを乗せた（ホバー）ときの動き */
+input[type="submit"]:hover {
+  background-color: #5a82c2; /* 少しだけ濃い青にして、押せる感を出す */
+  box-shadow: 0 6px 16px rgba(119, 157, 218, 0.4); /* 影を少し強めて浮き上がらせる */
+  transform: translateY(-1px); /* ほんの1ピクセルだけ上に動くプロの技 */
+}
+
+/* クリックした瞬間（アクティブ）の動き */
+input[type="submit"]:active {
+  transform: translateY(1px);  /* 押し込まれたような動きにする */
+  box-shadow: 0 2px 4px rgba(119, 157, 218, 0.2);
+}
+
+
+/* タブレット向けレイアウト */
+@media (max-width: 1000px) {
+
+  h1 {
+    font-size: 22px;
+  }
+  h2 {
+    font-size: 19px;
+  }
+}
+
+/* スマホ向けレイアウト */
+@media (max-width: 670px) {
+h1 {
+    font-size: 20px;
+  }
+  
+  h2 {
+    font-size: 18px;
+  }
+
+  /* スマホのときは真ん中寄せにしてスッキリ見せる */
+  .top-wrapper {
+    text-align: center;
+  }
+
+  }
+
+
+
+
+/*GGOGLEログイン*/
+.gsi-material-button {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  background-color: #f2f2f2;
+  background-image: none;
+  border: none;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #1f1f1f;
+  cursor: pointer;
+  font-family: 'Roboto', arial, sans-serif;
+  font-size: 14px;
+  height: 40px;
+  letter-spacing: 0.25px;
+  outline: none;
+  overflow: hidden;
+  padding: 0 12px;
+  position: relative;
+  text-align: center;
+  -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
+  transition: background-color .218s, border-color .218s, box-shadow .218s;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+  max-width: 400px;
+  min-width: min-content;
+}
+
+.gsi-material-button .gsi-material-button-icon {
+  height: 20px;
+  margin-right: 10px;
+  min-width: 20px;
+  width: 20px;
+}
+
+.gsi-material-button .gsi-material-button-content-wrapper {
+  -webkit-align-items: center;
+  align-items: center;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  height: 100%;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.gsi-material-button .gsi-material-button-contents {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  font-family: 'Roboto', arial, sans-serif;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+.gsi-material-button .gsi-material-button-state {
+  -webkit-transition: opacity .218s;
+  transition: opacity .218s;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.gsi-material-button:disabled {
+  cursor: default;
+  background-color: #ffffff61;
+}
+
+.gsi-material-button:disabled .gsi-material-button-state {
+  background-color: #1f1f1f1f;
+}
+
+.gsi-material-button:disabled .gsi-material-button-contents {
+  opacity: 38%;
+}
+
+.gsi-material-button:disabled .gsi-material-button-icon {
+  opacity: 38%;
+}
+
+.gsi-material-button:not(:disabled):active .gsi-material-button-state, 
+.gsi-material-button:not(:disabled):focus .gsi-material-button-state {
+  background-color: #001d35;
+  opacity: 12%;
+}
+
+.gsi-material-button:not(:disabled):hover {
+  -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+}
+
+.gsi-material-button:not(:disabled):hover .gsi-material-button-state {
+  background-color: #001d35;
+  opacity: 8%;
+}
