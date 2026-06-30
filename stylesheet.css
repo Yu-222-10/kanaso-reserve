@@ -195,7 +195,7 @@ input[type="text"] {
 }
 /*土曜日*/
 .c-wrapper td:last-child {
-    color: rgb(65, 65, 179);
+    color: rgb(81, 81, 175);
 }
 /*前後月の日付*/
 .c-wrapper td.disabled {
@@ -203,7 +203,7 @@ input[type="text"] {
 }
 /*本日*/
 .c-wrapper td.today {
-    background-color: #d58895;
+    background-color: #e2a6b0;
     color: #fff;
 }
 
@@ -235,10 +235,35 @@ input[type="text"] {
     float: right;
 }
 
+
+
 /* ==========================================
    戻るボタン（aタグ）のスタイル
    ========================================== */
 a[href="javascript:history.back()"] {
+  display: inline-block;
+  padding: 10px 24px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #b4c8dd;         
+  text-decoration: none;   /* 下線を消す */
+  background-color: #a1aacc;
+  border: 1px solid #dcdde1;/* 薄い枠線 */
+  border-radius: 6px;      /* 少し角を丸く */
+  cursor: pointer;
+  transition: all 0.2s ease; /* なめらかに色を変える */
+}
+
+/* マウスを乗せた（ホバー）ときの動き */
+a[href="javascript:history.back()"]:hover {
+  background-color: #dcdde1; /* 背景を少し濃くする */
+  color: #2f3640;            /* 文字をクッキリさせる */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* ほんの少し浮き上がらせる */
+}
+
+/*ログアウトボタン*/
+.btn logout {
   display: inline-block;
   padding: 10px 24px;
   margin-top: 20px;
@@ -253,12 +278,6 @@ a[href="javascript:history.back()"] {
   transition: all 0.2s ease; /* なめらかに色を変える */
 }
 
-/* マウスを乗せた（ホバー）ときの動き */
-a[href="javascript:history.back()"]:hover {
-  background-color: #dcdde1; /* 背景を少し濃くする */
-  color: #2f3640;            /* 文字をクッキリさせる */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* ほんの少し浮き上がらせる */
-}
 
 /* ==========================================
    予約するボタン（submitボタン）のスタイル
