@@ -7,6 +7,8 @@ h1, h2, h3, h4, h5, h6, p, div {
 
 /* 💡 画面全体で、横スクロールが発生するのを強制的に禁止して縦長にする */
 html, body {
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
   width: 100%;
 }
@@ -21,9 +23,9 @@ body {
  .container, 
 .c-wrapper, 
 .room-container {
-  width: 100%;
-  max-width: 600px;        /* 💡 全画面の最大幅を600pxに統一！ */
-  margin: 40px auto;       /* 上下に隙間を作り、左右は真ん中寄せ */
+  width: 90%;
+  max-width: 1170px;        /* 💡 全画面の最大幅を600pxに統一！ */
+  margin: 20px auto;       /* 上下に隙間を作り、左右は真ん中寄せ */
   padding: 20px;
   background-color: #ffffff;
   border-radius: 12px;     /* 角を丸く */
@@ -195,7 +197,7 @@ input[type="text"] {
 }
 /*土曜日*/
 .c-wrapper td:last-child {
-    color: rgb(81, 81, 175);
+    color: rgb(87, 87, 162);
 }
 /*前後月の日付*/
 .c-wrapper td.disabled {
@@ -203,7 +205,7 @@ input[type="text"] {
 }
 /*本日*/
 .c-wrapper td.today {
-    background-color: #e2a6b0;
+    background-color: #f1b8c2;
     color: #fff;
 }
 
@@ -216,17 +218,17 @@ input[type="text"] {
 }
 #next-prev-button button{
     cursor: pointer;
-    background: #779dda;
+    background: #a2b1ca;
     color: #fff;
-    border: 1px solid #6a83ac;
+    border: 1px solid #98b8ed;
     border-radius: 4px;
     font-size: 1rem;
     padding: 0.5rem 2rem;
     margin: 1rem 0;
 }
 #next-prev-button button:hover{
-    background-color: #D4BB92;
-    border-color: #D4BB92;
+    background-color: #8f8cec;
+    border-color: #4e5bc3;
 }
 #prev {
     float: left;
@@ -269,9 +271,9 @@ a[href="javascript:history.back()"]:hover {
   margin-top: 20px;
   font-size: 16px;
   font-weight: bold;
-  color: #778ca3;          /* 落ち着いたグレーブルーの文字 */
+  color: #e7e7e7;          /* 落ち着いたグレーブルーの文字 */
   text-decoration: none;   /* 下線を消す */
-  background-color: #f5f6fa;/* 薄いグレーの背景 */
+  background-color: #9fa9d2;/* 薄いグレーの背景 */
   border: 1px solid #dcdde1;/* 目立たない薄い枠線 */
   border-radius: 6px;      /* 少し角を丸く */
   cursor: pointer;
@@ -279,9 +281,8 @@ a[href="javascript:history.back()"]:hover {
 }
 
 
-/* ==========================================
-   予約するボタン（submitボタン）のスタイル
-   ========================================== */
+/* 予約するボタン（submitボタン）のスタイル*/
+
 input[type="submit"] {
   display: inline-block;
   width: 100%;             /* 横幅いっぱいに広げて押しやすく */

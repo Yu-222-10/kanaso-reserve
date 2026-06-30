@@ -1,3 +1,4 @@
+//room.html
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
 
@@ -45,14 +46,16 @@ function goReservation(roomNum, time) {
     }
 
 
+
+//today.html
 const todayString = `${month}月${date}日 の空き一覧`;
 // HTMLの id="today-date" の場所に表示させる
 document.getElementById('today-date').textContent = todayString;
-    // 💡【修正②】判定②：マスの文字が「〇」のときだけ次に進める！
+    // マスの文字が「〇」のときだけ次に進めむ
     if (targetCell.textContent.trim() === "〇") {
-        // 予約画面(reserve.html)へ「日付・部屋・時間」を全部くっつけて移動！
+        // 予約画面(reserve.html)へ「日付・部屋・時間」を全部くっつけて移動
         location.href = `reserve.html?year=${year}&month=${month}&day=${day}&room=${roomNum}&time=${time}`;
-    } // 👈【ココ！】文字が「〇」のif文はここで閉じます！
+    } // 文字が「〇」のif文はここで閉じる
 
 
 
@@ -64,7 +67,7 @@ if (lunchTbody && afterTbody) {
   lunchTbody.innerHTML = "";
   afterTbody.innerHTML = "";
 
-// ☀️ 昼休みのデータ取得
+//  昼休みのデータ取得
 const lunch301 = document.getElementById("301-lunch");
 const lunch401 = document.getElementById("401-lunch");
 const lunch501 = document.getElementById("501-lunch");
@@ -87,7 +90,7 @@ const lunch801 = document.getElementById("801-lunch");
 const lunch901 = document.getElementById("901-lunch");
 const lunch902 = document.getElementById("902-lunch");
 
-// 🌙 放課後のデータ取得
+// 放課後のデータ取得
 const after301 = document.getElementById("301-afternoon");
 const after401 = document.getElementById("401-afternoon");
 const after501 = document.getElementById("501-afternoon");
@@ -110,71 +113,71 @@ const after801 = document.getElementById("801-afternoon");
 const after901 = document.getElementById("901-afternoon");
 const after902 = document.getElementById("902-afternoon");
 
-function addRoomToTable(element, roomName, tbody) {
-  // ※記号の「◯」と漢数字の「〇」どちらでも動くようにしてあります
+function addRoomToTable(element, roomNum, time, tbody) {
+  // ※記号の「◯」と漢数字の「〇」どちらでも動く
   if (element && (element.textContent.trim() === "〇" || element.textContent.trim() === "◯")) {
     const tr = document.createElement('tr');
     
     const tdRoom = document.createElement('td');
     tdRoom.textContent = roomName; 
-    
-    const tdStatus = document.createElement('td');
-    tdStatus.textContent = "〇";
-    tdStatus.classList.add('status-maru'); 
-    
+   
     tr.appendChild(tdRoom);
-    tr.appendChild(tdStatus);
     tbody.appendChild(tr); 
   }
 }
 
+tr.addEventListener('click', () => {
+     location.href = `reserve.html?year=${year}&month=${month}&day=${date}&room=${roomNum}&time=${time}`;
+    });
+
+// 昼休みの表（lunchTbody）へ振り分け
 if (lunchTbody) {
-  addRoomToTable(lunch301, "301教室", lunchTbody);
-  addRoomToTable(lunch401, "401教室", lunchTbody);
-  addRoomToTable(lunch501, "501教室", lunchTbody);
-  addRoomToTable(lunch502, "502教室", lunchTbody);
-  addRoomToTable(lunch503, "503教室", lunchTbody);
-  addRoomToTable(lunch504, "504教室", lunchTbody);
-  addRoomToTable(lunch505, "505教室", lunchTbody);
-  addRoomToTable(lunch506, "506教室", lunchTbody);
-  addRoomToTable(lunch507, "507教室", lunchTbody);
-  addRoomToTable(lunch508, "508教室", lunchTbody);
-  addRoomToTable(lunch601, "601教室", lunchTbody);
-  addRoomToTable(lunch701, "701教室", lunchTbody);
-  addRoomToTable(lunch702, "702教室", lunchTbody);
-  addRoomToTable(lunch703, "703教室", lunchTbody);
-  addRoomToTable(lunch704, "704教室", lunchTbody);
-  addRoomToTable(lunch705, "705教室", lunchTbody);
-  addRoomToTable(lunch706, "706教室", lunchTbody);
-  addRoomToTable(lunch707, "707教室", lunchTbody);
-  addRoomToTable(lunch801, "801教室", lunchTbody);
-  addRoomToTable(lunch901, "901教室", lunchTbody);
-  addRoomToTable(lunch902, "902教室", lunchTbody);
+ addRoomToTable(lunch301, "301", "昼休み", lunchTbody);
+  addRoomToTable(lunch401, "401", "昼休み", lunchTbody);
+  addRoomToTable(lunch501, "501", "昼休み", lunchTbody);
+  addRoomToTable(lunch502, "502", "昼休み", lunchTbody);
+  addRoomToTable(lunch503, "503", "昼休み", lunchTbody);
+  addRoomToTable(lunch504, "504", "昼休み", lunchTbody);
+  addRoomToTable(lunch505, "505", "昼休み", lunchTbody);
+  addRoomToTable(lunch506, "506", "昼休み", lunchTbody);
+  addRoomToTable(lunch507, "507", "昼休み", lunchTbody);
+  addRoomToTable(lunch508, "508", "昼休み", lunchTbody);
+  addRoomToTable(lunch601, "601", "昼休み", lunchTbody);
+  addRoomToTable(lunch701, "701", "昼休み", lunchTbody);
+  addRoomToTable(lunch702, "702", "昼休み", lunchTbody);
+  addRoomToTable(lunch703, "703", "昼休み", lunchTbody);
+  addRoomToTable(lunch704, "704", "昼休み", lunchTbody);
+  addRoomToTable(lunch705, "705", "昼休み", lunchTbody);
+  addRoomToTable(lunch706, "706", "昼休み", lunchTbody);
+  addRoomToTable(lunch707, "707", "昼休み", lunchTbody);
+  addRoomToTable(lunch801, "801", "昼休み", lunchTbody);
+  addRoomToTable(lunch901, "901", "昼休み", lunchTbody);
+  addRoomToTable(lunch902, "902", "昼休み", lunchTbody);
 }
 
-// 🌙 放課後の表（afterTbody）へ振り分け
+// 放課後の表（afterTbody）へ振り分け
 if (afterTbody) {
-  addRoomToTable(after301, "301教室", afterTbody);
-  addRoomToTable(after401, "401教室", afterTbody);
-  addRoomToTable(after501, "501教室", afterTbody);
-  addRoomToTable(after502, "502教室", afterTbody);
-  addRoomToTable(after503, "503教室", afterTbody);
-  addRoomToTable(after504, "504教室", afterTbody);
-  addRoomToTable(after505, "505教室", afterTbody);
-  addRoomToTable(after506, "506教室", afterTbody);
-  addRoomToTable(after507, "507教室", afterTbody);
-  addRoomToTable(after508, "508教室", afterTbody);
-  addRoomToTable(after601, "601教室", afterTbody);
-  addRoomToTable(after701, "701教室", afterTbody);
-  addRoomToTable(after702, "702教室", afterTbody);
-  addRoomToTable(after703, "703教室", afterTbody);
-  addRoomToTable(after704, "704教室", afterTbody);
-  addRoomToTable(after705, "705教室", afterTbody);
-  addRoomToTable(after706, "706教室", afterTbody);
-  addRoomToTable(after707, "707教室", afterTbody);
-  addRoomToTable(after801, "801教室", afterTbody);
-  addRoomToTable(after901, "901教室", afterTbody);
-  addRoomToTable(after902, "902教室", afterTbody);
+ addRoomToTable(after301, "301", "放課後", afterTbody);
+  addRoomToTable(after401, "401", "放課後", afterTbody);
+  addRoomToTable(after501, "501", "放課後", afterTbody);
+  addRoomToTable(after502, "502", "放課後", afterTbody);
+  addRoomToTable(after503, "503", "放課後", afterTbody);
+  addRoomToTable(after504, "504", "放課後", afterTbody);
+  addRoomToTable(after505, "505", "放課後", afterTbody);
+  addRoomToTable(after506, "506", "放課後", afterTbody);
+  addRoomToTable(after507, "507", "放課後", afterTbody);
+  addRoomToTable(after508, "508", "放課後", afterTbody);
+  addRoomToTable(after601, "601", "放課後", afterTbody);
+  addRoomToTable(after701, "701", "放課後", afterTbody);
+  addRoomToTable(after702, "702", "放課後", afterTbody);
+  addRoomToTable(after703, "703", "放課後", afterTbody);
+  addRoomToTable(after704, "704", "放課後", afterTbody);
+  addRoomToTable(after705, "705", "放課後", afterTbody);
+  addRoomToTable(after706, "706", "放課後", afterTbody);
+  addRoomToTable(after707, "707", "放課後", afterTbody);
+  addRoomToTable(after801, "801", "放課後", afterTbody);
+  addRoomToTable(after901, "901", "放課後", afterTbody);
+  addRoomToTable(after902, "902", "放課後", afterTbody);
 }
   
 }
