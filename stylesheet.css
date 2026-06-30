@@ -48,7 +48,7 @@ h1 {
 }
 
 h2 {
-  color: #2c3e50;
+  color: #3e5872;
   margin-bottom: 20px;
 }
 
@@ -248,7 +248,7 @@ a[href="javascript:history.back()"] {
   margin-top: 20px;
   font-size: 16px;
   font-weight: bold;
-  color: #b4c8dd;         
+  color: #ffffff;         
   text-decoration: none;   /* 下線を消す */
   background-color: #a1aacc;
   border: 1px solid #dcdde1;/* 薄い枠線 */
@@ -259,7 +259,7 @@ a[href="javascript:history.back()"] {
 
 /* マウスを乗せた（ホバー）ときの動き */
 a[href="javascript:history.back()"]:hover {
-  background-color: #dcdde1; /* 背景を少し濃くする */
+  background-color: #afbbec; /* 背景を少し濃くする */
   color: #2f3640;            /* 文字をクッキリさせる */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* ほんの少し浮き上がらせる */
 }
@@ -271,7 +271,7 @@ a[href="javascript:history.back()"]:hover {
   margin-top: 20px;
   font-size: 16px;
   font-weight: bold;
-  color: #e7e7e7;          /* 落ち着いたグレーブルーの文字 */
+  color: #ffffff;          /* 落ち着いたグレーブルーの文字 */
   text-decoration: none;   /* 下線を消す */
   background-color: #9fa9d2;/* 薄いグレーの背景 */
   border: 1px solid #dcdde1;/* 目立たない薄い枠線 */
