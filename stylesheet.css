@@ -5,6 +5,12 @@ h1, h2, h3, h4, h5, h6, p, div {
   padding: 0;
 }
 
+/* 💡 画面全体で、横スクロールが発生するのを強制的に禁止して縦長にする */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   font-family: 'Hiragino Kaku Gothic ProN W3', sans-serif;
   
@@ -143,6 +149,12 @@ input[type="text"] {
 }
 .room td.available:hover {
   background-color: #f0f7ff; /* マウスを乗せたときに少し青くして反応をわかりやすく */
+}
+
+.room-js-text {
+  color:#376992 ;
+  font-size: 14px;
+
 }
 
 
@@ -308,6 +320,10 @@ h1 {
     text-align: center;
   }
 
+.room-js-text{
+    width: 25%;
+    
+  }
   }
 
 
