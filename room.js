@@ -117,18 +117,17 @@ function addRoomToTable(element, roomNum, time, tbody) {
   // ※記号の「◯」と漢数字の「〇」どちらでも動く
   if (element && (element.textContent.trim() === "〇" || element.textContent.trim() === "◯")) {
     const tr = document.createElement('tr');
-    
+    tr.addEventListener('click', () => {
+      goReservation(roomNum, time);
+    });
     const tdRoom = document.createElement('td');
-    tdRoom.textContent = roomName; 
+    tdRoom.textContent = roomNum; 
    
     tr.appendChild(tdRoom);
     tbody.appendChild(tr); 
   }
 }
 
-tr.addEventListener('click', () => {
-     location.href = `reserve.html?year=${year}&month=${month}&day=${date}&room=${roomNum}&time=${time}`;
-    });
 
 // 昼休みの表（lunchTbody）へ振り分け
 if (lunchTbody) {
@@ -180,4 +179,3 @@ if (afterTbody) {
   addRoomToTable(after902, "902", "放課後", afterTbody);
 }
   
-}
