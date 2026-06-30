@@ -296,11 +296,11 @@ input[type="submit"]:active {
 /* スマホ向けレイアウト */
 @media (max-width: 670px) {
 h1 {
-    font-size: 22px;
+    font-size: 20px;
   }
   
   h2 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   /* スマホのときは真ん中寄せにしてスッキリ見せる */
