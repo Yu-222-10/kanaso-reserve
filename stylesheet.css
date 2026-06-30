@@ -191,11 +191,11 @@ input[type="text"] {
 }
 /*日曜日*/
 .c-wrapper td:first-child {
-    color: red;
+    color: rgb(231, 97, 97);
 }
 /*土曜日*/
 .c-wrapper td:last-child {
-    color: blue;
+    color: rgb(65, 65, 179);
 }
 /*前後月の日付*/
 .c-wrapper td.disabled {
@@ -216,9 +216,9 @@ input[type="text"] {
 }
 #next-prev-button button{
     cursor: pointer;
-    background: #d6bd94;
+    background: #779dda;
     color: #fff;
-    border: 1px solid #B78D4A;
+    border: 1px solid #6a83ac;
     border-radius: 4px;
     font-size: 1rem;
     padding: 0.5rem 2rem;

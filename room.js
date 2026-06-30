@@ -44,9 +44,44 @@ function goReservation(roomNum, time) {
         return; // ここで処理を終了し、予約画面には飛ばさない
     }
 
+
+const todayString = `${month}月${date}日 の空き一覧`;
+// HTMLの id="today-date" の場所に表示させる
+document.getElementById('today-date').textContent = todayString;
     // 💡【修正②】判定②：マスの文字が「〇」のときだけ次に進める！
     if (targetCell.textContent.trim() === "〇") {
         // 予約画面(reserve.html)へ「日付・部屋・時間」を全部くっつけて移動！
         location.href = `reserve.html?year=${year}&month=${month}&day=${day}&room=${roomNum}&time=${time}`;
     } // 👈【ココ！】文字が「〇」のif文はここで閉じます！
+    const lunchTbody = document.getElementById('lunch-list');
+const afterTbody = document.getElementById('afterschool-list');
+
+// 💡 HTML側に該当のidがあるときだけ動かす（エラー防止）
+if (lunchTbody && afterTbody) {
+  lunchTbody.innerHTML = "";
+  afterTbody.innerHTML = "";
+
+  // 既存のデータ（例：reservations）を使って振り分ける
+  reservations.forEach(data => {
+    if (data.status === "〇") {
+      const tr = document.createElement('tr');
+      
+      const tdRoom = document.createElement('td');
+      tdRoom.textContent = data.room;
+      
+      const tdStatus = document.createElement('td');
+      tdStatus.textContent = data.status;
+      tdStatus.classList.add('status-maru');
+
+      tr.appendChild(tdRoom);
+      tr.appendChild(tdStatus);
+
+      if (data.time === "昼休み") {
+        lunchTbody.appendChild(tr);
+      } else if (data.time === "放課後") {
+        afterTbody.appendChild(tr);
+      }
+    }
+  });
+  
 }
