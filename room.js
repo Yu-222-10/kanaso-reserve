@@ -91,27 +91,27 @@ const lunch901 = document.getElementById("901-lunch");
 const lunch902 = document.getElementById("902-lunch");
 
 // 放課後のデータ取得
-const after301 = document.getElementById("301-afternoon");
-const after401 = document.getElementById("401-afternoon");
-const after501 = document.getElementById("501-afternoon");
-const after502 = document.getElementById("502-afternoon");
-const after503 = document.getElementById("503-afternoon");
-const after504 = document.getElementById("504-afternoon");
-const after505 = document.getElementById("505-afternoon");
-const after506 = document.getElementById("506-afternoon");
-const after507 = document.getElementById("507-afternoon");
-const after508 = document.getElementById("508-afternoon");
-const after601 = document.getElementById("601-afternoon");
-const after701 = document.getElementById("701-afternoon");
-const after702 = document.getElementById("702-afternoon");
-const after703 = document.getElementById("703-afternoon");
-const after704 = document.getElementById("704-afternoon");
-const after705 = document.getElementById("705-afternoon");
-const after706 = document.getElementById("706-afternoon");
-const after707 = document.getElementById("707-afternoon");
-const after801 = document.getElementById("801-afternoon");
-const after901 = document.getElementById("901-afternoon");
-const after902 = document.getElementById("902-afternoon");
+const after301 = document.getElementById("301-after");
+const after401 = document.getElementById("401-after");
+const after501 = document.getElementById("501-after");
+const after502 = document.getElementById("502-after");
+const after503 = document.getElementById("503-after");
+const after504 = document.getElementById("504-after");
+const after505 = document.getElementById("505-after");
+const after506 = document.getElementById("506-after");
+const after507 = document.getElementById("507-after");
+const after508 = document.getElementById("508-after");
+const after601 = document.getElementById("601-after");
+const after701 = document.getElementById("701-after");
+const after702 = document.getElementById("702-after");
+const after703 = document.getElementById("703-after");
+const after704 = document.getElementById("704-after");
+const after705 = document.getElementById("705-after");
+const after706 = document.getElementById("706-after");
+const after707 = document.getElementById("707-after");
+const after801 = document.getElementById("801-after");
+const after901 = document.getElementById("901-after");
+const after902 = document.getElementById("902-after");
 
 function addRoomToTable(element, roomNum, time, tbody) {
   // ※記号の「◯」と漢数字の「〇」どちらでも動く
