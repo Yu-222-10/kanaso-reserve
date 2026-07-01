@@ -73,6 +73,44 @@ function createProcess(year, month) {
     }
     return calendar;
 }
+    // 日付チェック
+function checkDate(year, month, day) {
+    if(isToday(year, month, day)){
+        return {
+            isToday: true,
+            isHoliday: false,
+            holidayName: ""
+        };
+    }
+
+    var checkHoliday = isHoliday(year, month, day);
+    return {
+        isToday: false,
+        isHoliday: checkHoliday[0],
+        holidayName: checkHoliday[1],
+    };
+}
+
+// 当日かどうか
+function isToday(year, month, day) {
+    return (year == today.getFullYear()
+        && month == (today.getMonth())
+        && day == today.getDate());
+    }
+
+// 祝日かどうか
+function isHoliday(year, month, day) {
+    var checkDate = year + '/' + (month + 1) + '/' + day;
+    var dateList = request.responseText.split('\n');
+    // 1行目はヘッダーのため、初期値1で開始
+    for (var i = 1; i < dateList.length; i++) {
+        if (dateList[i].split(',')[0] === checkDate) {
+            return [true, dateList[i].split(',')[1]];
+        }
+    }
+    return [false, ""];
+}
+
    document.addEventListener("click", (e) => {
   if (e.target.classList.contains("day")) {
     const day = e.target.dataset.day;
@@ -85,21 +123,9 @@ function createProcess(year, month) {
     location.href = `room.html?year=${year}&month=${month}&day=${day}`;
   }
 });
-//部屋
- if (document.getElementById("selected-date")) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const year = urlParams.get('year');
-    const month = urlParams.get('month');
-    const day = urlParams.get('day');
-    
-    if (year && month && day) {
-        const formattedDate = `${year}年${month}月${day}日`;
-        document.getElementById("selected-date").textContent = formattedDate;
-    } else {
-        document.getElementById("selected-date").textContent = "日付が選択されていません";
-    }
- 
-  }
+
+
+        
   
   
   
