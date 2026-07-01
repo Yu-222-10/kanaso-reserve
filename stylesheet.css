@@ -1,39 +1,38 @@
-html, body,
-ul, ol, li,
-h1, h2, h3, h4, h5, h6, p, div {
-  margin: 0;
-  padding: 0;
+*{
+  box-sizing: border-box;
 }
-
-/* 💡 画面全体で、横スクロールが発生するのを強制的に禁止して縦長にする */
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  width: 100%;
-}
-
-body {
-  font-family: 'Hiragino Kaku Gothic ProN W3', sans-serif;
-  
-}
-
 /* 幅*/
 
  .container, 
-.c-wrapper, 
 .room-container {
-  width: 90%;
-  max-width: 1170px;        /* 💡 全画面の最大幅を600pxに統一！ */
-  margin: 20px auto;       /* 上下に隙間を作り、左右は真ん中寄せ */
+  width: 100%;
+  max-width: 760px;        /*  全画面の最大幅を統一 */
+  margin: 40px auto;       /* 上下に隙間を作り、左右は真ん中寄せ */
+  padding: 70px;
+  background-color: #ffffff;
+  border-radius: 12px;     /* 角を丸く */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05); /* 優しい影 */
+  text-align: center;
+  height: auto;
+}
+.c-container {
+  width: 100% !important;
+  max-width: 760px !important;        /*  全画面の最大幅を統一 */
+  margin: 20px auto;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 12px;     /* 角を丸く */
   box-shadow: 0 4px 16px rgba(0,0,0,0.05); /* 優しい影 */
   text-align: center;
 }
-  .top-wrapper {
-  padding: 100px 0 100px 0;
+.c-container,
+.c-container * {
+  box-sizing: content-box !important;
+}
+
+  .top-wrapper,
+  .c-wrapper  {
+  padding: 100px 10px ;
   color: white;
   background-size: cover;
   text-align: center;
@@ -60,7 +59,7 @@ h3 {
   text-align: ; /* ラベルっぽく左寄せ */
 }
 .start {
-  background-color:#5a87ab;/* オレンジ色（好きな色に変えてね） */
+  background-color:#5a87ab;
   color: white;              /* 文字の色を白にする */
   border: none;              /* 枠線を消す */
 }
