@@ -1,5 +1,16 @@
+html, body,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6, p, div {
+  margin: 0;
+  padding: 0;
+}
 *{
   box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
 }
 /* 幅*/
 
@@ -25,10 +36,7 @@
   box-shadow: 0 4px 16px rgba(0,0,0,0.05); /* 優しい影 */
   text-align: center;
 }
-.c-container,
-.c-container * {
-  box-sizing: content-box !important;
-}
+
 
   .top-wrapper,
   .c-wrapper  {
@@ -238,9 +246,8 @@ input[type="text"] {
 
 
 
-/* ==========================================
-   戻るボタン（aタグ）のスタイル
-   ========================================== */
+/* 戻るボタン（aタグ）のスタイル*/
+ 
 a[href="javascript:history.back()"] {
   display: inline-block;
   padding: 10px 24px;
@@ -272,7 +279,7 @@ a[href="javascript:history.back()"]:hover {
   font-weight: bold;
   color: #ffffff;          /* 落ち着いたグレーブルーの文字 */
   text-decoration: none;   /* 下線を消す */
-  background-color: #9fa9d2;/* 薄いグレーの背景 */
+  background-color: #9eaad7;/* 薄いグレーの背景 */
   border: 1px solid #dcdde1;/* 目立たない薄い枠線 */
   border-radius: 6px;      /* 少し角を丸く */
   cursor: pointer;
