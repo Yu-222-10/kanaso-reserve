@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const todayDisplay = document.getElementById("today-date");
 
   if (dateDisplay) {
-    dateDisplay.textContent = `${year}年${month}月${day}日 使用状況`;
+    dateDisplay.textContent = `${year}年${month}月${day}日の使用状況`;
   }
   if (todayDisplay) {
     todayDisplay.textContent = `${month}月${day}日 の空き一覧`;

@@ -55,7 +55,7 @@ h1 {
 }
 
 h2 {
-  color: #3e5872;
+  color: #506a83;
   margin-bottom: 20px;
 }
 
@@ -190,7 +190,7 @@ input[type="text"] {
     width: 100%;
 }
 .c-wrapper th {
-    color: #000;
+    color: #100f0f;
 }
 .c-wrapper th, td {
     outline: 1px solid #ddd;
@@ -212,12 +212,9 @@ input[type="text"] {
 }
 /*本日*/
 .c-wrapper td.today {
-    background-color: #f1b8c2;
+    background-color: #ddadb6;
     color: #fff;
 }
-
-
-
 
 /*ボタン*/
 #next-prev-button {
@@ -235,7 +232,7 @@ input[type="text"] {
 }
 #next-prev-button button:hover{
     background-color: #8f8cec;
-    border-color: #4e5bc3;
+    border-color: #6976d7;
 }
 #prev {
     float: left;
@@ -243,7 +240,7 @@ input[type="text"] {
 #next {
     float: right;
 }
-
+/* カレンダー終了*/
 
 
 /* 戻るボタン（aタグ）のスタイル*/
@@ -271,7 +268,7 @@ a[href="javascript:history.back()"]:hover {
 }
 
 /*ログアウトボタン*/
-.btn logout {
+.btn.logout {
   display: inline-block;
   padding: 10px 24px;
   margin-top: 20px;
