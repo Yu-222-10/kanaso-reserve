@@ -39,13 +39,11 @@ html, body {
   
   .top-wrapper,
   .c-wrapper  {
-  padding: 20px ;
+  padding: 50px 40px ;
   color: white;
   background-size: cover;
   text-align: center;
-  display: flex
-  justify-content: center;
-  align-items: center;
+  
 }
 .container {
   height: auto;            /* 💡 固定の300pxを廃止して、中身に合わせる */
@@ -123,6 +121,7 @@ input[type="text"] {
 /* 部屋 room.html*/
 .room-wrappe {
   overflow: auto;
+  padding: 50px 40px ;
 }
 
 .room-container {
