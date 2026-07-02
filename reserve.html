@@ -30,7 +30,7 @@
     const time = params.get('time');
 
     // 画面のタイトルを書き換える
-    if (month && day && room && time) {
+    if (dateStr && room && time) {
       document.getElementById('yoyaku-info').innerText = `${dateStr} ${time} ${room}`;
     } else {
       document.getElementById('yoyaku-info').innerText = `予約情報の取得に失敗しました`;
