@@ -21,8 +21,7 @@
      </form>
      
     </div>
-   </div>
-
+  </div>
 
    <script>
     const params = new URLSearchParams(window.location.search);
@@ -30,6 +29,22 @@
     const room = params.get('room');
     const time = params.get('time');
 
+    // 画面のタイトルを書き換える
+    if (month && day && room && time) {
+      document.getElementById('yoyaku-info').innerText = `${dateStr} ${time} ${room}`;
+    } else {
+      document.getElementById('yoyaku-info').innerText = `予約情報の取得に失敗しました`;
+    }
+
+    // 2. 「予約する」ボタンが押された時の動き（保存 ＆ 画面移動）
+    document.getElementById('reserve-form').onsubmit = function(e) {
+        e.preventDefault(); // ページが勝手に切り替わるのを防ぐ
+        
+        const groupName = document.getElementById('name').value.trim();
+        if (!groupName) {
+            alert("団体名を入力してください。");
+            return;
+        }
 
 // 2. 保存するための予約データ（箱）を作る
   const newReservation = {
@@ -51,15 +66,6 @@
   // 5. ブラウザに最新のリストを保存する
   localStorage.setItem("reservations", JSON.stringify(reservationList));
 
-
-    // 画面のタイトルを書き換える
-    document.getElementById('yoyaku-info').innerText = `${dateStr} ${time} ${room}`;
-
-    // 「予約する」ボタンが押された時の動き
-    document.getElementById('reserve-form').onsubmit = function(e) {
-        e.preventDefault(); // ページが勝手に切り替わるのを防ぐ
-        
-        const groupName = document.getElementById('name').value;
         
         // 完了画面 (end.html) にすべての情報を引き継いで移動
         location.href = `end.html?date=${dateStr}&room=${room}&time=${time}&name=${groupName}`;
