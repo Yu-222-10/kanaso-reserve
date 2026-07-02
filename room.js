@@ -187,3 +187,37 @@ function initRoomTable() {
     addRoomToTable(after902, "902", "放課後", afterTbody);
   }
 }
+
+//保存、キャンセル
+// 💡 予約ボタンを押したときの処理（イメージ）
+function dorequestReservation() {
+  const groupName = document.getElementById("group-name").value.trim();
+  if (!groupName) {
+    alert("団体名を入力してください。");
+    return;
+  }
+
+  // 保存する予約データを作る
+  const newReservation = {
+    id: Date.now(), // 👈 キャンセルするときに見分けるための固有番号
+    year: year,
+    month: month,
+    day: day,
+    room: roomNum,
+    time: time,
+    group: groupName
+  };
+
+  // 既存の予約リストをブラウザから読み込む（なければ空っぽの配列）
+  let reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
+  
+  // 新しい予約をリストに追加
+  reservationList.push(newReservation);
+  
+  // ブラウザに保存する
+  localStorage.setItem("reservations", JSON.stringify(reservationList));
+
+  alert("予約が完了しました！履歴画面へ移動します。");
+  // 予約履歴ページへジャンプ
+  location.href = "history.html";
+}
