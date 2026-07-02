@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     month = parseInt(params.get("month"));
     day = parseInt(params.get("day"));
   } else {
-    //  なければ「今日の日付」を自動で取得する！
+    //  なければ「今日の日付」を自動で取得する
     const todayObj = new Date();
     year = todayObj.getFullYear();
     month = todayObj.getMonth() + 1; // 月は0から始まるので+1

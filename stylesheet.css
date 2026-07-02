@@ -328,7 +328,7 @@ input[type="submit"]:active {
 /*check.html*/
 /* ❌ キャンセルボタンのデザイン */
 .cancel-btn {
-  background-color: #779dda; 
+  background-color: #819bc6; 
   color: white;
   border: none;
   padding: 6px 12px;

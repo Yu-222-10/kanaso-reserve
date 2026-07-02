@@ -25,7 +25,7 @@ function displayHistory() {
       <td>${res.time}</td>
       <td>${res.group}</td>
       <td>
-        <button class="cancel-btn" onclick="cancelReservation(${res.id})">キャンセル</button>
+        <button class="cancel-btn" onclick="cancelReservation('${res.id}')">キャンセル</button>
       </td>
     `;
     tbody.appendChild(tr);
