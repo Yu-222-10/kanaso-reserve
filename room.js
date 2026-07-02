@@ -59,7 +59,7 @@ function goReservation(roomNum, time) {
   }
 
   const cellText = targetCell.textContent.trim();
-  if (cellText === "〇" || cellText === "◯") {
+  if (cellText === "〇" ) {
     location.href = `reserve.html?year=${year}&month=${month}&day=${day}&room=${roomNum}&time=${time}`;
   }
 }
@@ -68,7 +68,7 @@ function goReservation(roomNum, time) {
 // 3. 元のデータが「◯」なら、部屋名だけを別のテーブルに追加する命令
 // ==========================================
 function addRoomToTable(element, roomNum, time, tbody) {
-  if (element && (element.textContent.trim() === "〇" || element.textContent.trim() === "◯")) {
+  if (element && (element.textContent.trim() === "〇" )) {
     const tr = document.createElement('tr');
     tr.style.cursor = "pointer";
     tr.addEventListener('click', () => {
