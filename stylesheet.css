@@ -14,8 +14,7 @@ html, body {
 }
 /* 幅*/
 
- .container, 
-.room-container {
+ .container {
   width: 100%;
   max-width: 760px;        /*  全画面の最大幅を統一 */
   margin: 40px auto;       /* 上下に隙間を作り、左右は真ん中寄せ */
@@ -37,7 +36,7 @@ html, body {
   text-align: center;
 }
 
-  .room-wrapper,
+  
   .top-wrapper,
   .c-wrapper  {
   padding: 100px 10px ;
