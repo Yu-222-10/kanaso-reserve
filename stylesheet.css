@@ -149,11 +149,11 @@ input[type="text"] {
 .room th {
   padding: 10px;
   border-bottom: solid 3px;
-  color: #778ca3;
+  color: #778ca3 !important;
 }
 .room td {
   padding: 10px;
-  border-bottom: solid 1px #778ca3;
+  border-bottom: solid 1px #778ca3 !important;
   
 }
 .room td.available:hover {
@@ -316,6 +316,22 @@ input[type="submit"]:active {
   box-shadow: 0 2px 4px rgba(119, 157, 218, 0.2);
 }
 
+/*check.html*/
+/* ❌ キャンセルボタンのデザイン */
+.cancel-btn {
+  background-color: #779dda; 
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-btn:hover {
+  background-color: #6976d7; 
+}
 
 /* タブレット向けレイアウト */
 @media (max-width: 1000px) {

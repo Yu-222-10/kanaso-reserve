@@ -25,11 +25,32 @@
 
 
    <script>
-    // URLの ?year=2026&month=5&day=20&room=501... を解析
     const params = new URLSearchParams(window.location.search);
     const dateStr = `${params.get('month')}月${params.get('day')}日`;
     const room = params.get('room');
     const time = params.get('time');
+
+
+// 2. 保存するための予約データ（箱）を作る
+  const newReservation = {
+    id: Date.now(), // キャンセル用の一意のID
+    year: rYear,
+    month: rMonth,
+    day: rDay,
+    room: rRoom,
+    time: rTime,
+    group: groupName
+  };
+
+  // 3. ブラウザから今までの予約リストを読み込む
+  let reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
+  
+  // 4. 新しい予約をリストに追加する
+  reservationList.push(newReservation);
+  
+  // 5. ブラウザに最新のリストを保存する
+  localStorage.setItem("reservations", JSON.stringify(reservationList));
+
 
     // 画面のタイトルを書き換える
     document.getElementById('yoyaku-info').innerText = `${dateStr} ${time} ${room}`;
