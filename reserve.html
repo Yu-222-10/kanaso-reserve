@@ -25,6 +25,7 @@
 
    <script>
     const params = new URLSearchParams(window.location.search);
+    const year = params.get('year') || new Date().getFullYear();
     const dateStr = `${params.get('month')}月${params.get('day')}日`;
     const room = params.get('room');
     const time = params.get('time');

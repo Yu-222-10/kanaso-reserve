@@ -1,18 +1,16 @@
-// ==========================================
 // 1. 画面ロード時に日付を決定して表示する
-// ==========================================
 let year, month, day;
 
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   
-  // 💡 URLに日付が書いてあるかチェック
+  // URLに日付が書いてあるかチェック
   if (params.get("year") && params.get("month") && params.get("day")) {
     year = parseInt(params.get("year"));
     month = parseInt(params.get("month"));
     day = parseInt(params.get("day"));
   } else {
-    // 💡 なければ「今日（リアルな本日の日付）」を自動で取得する！
+    //  なければ「今日の日付」を自動で取得する！
     const todayObj = new Date();
     year = todayObj.getFullYear();
     month = todayObj.getMonth() + 1; // 月は0から始まるので+1
@@ -25,11 +23,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (dateDisplay) {
     dateDisplay.textContent = `${year}年${month}月${day}日の使用状況`;
+    
+    // 💾 【新機能】room.html（使用状況画面）が開かれた場合、現在の◯×の状態をブラウザに記憶させる
+    saveCurrentRoomStatus();
   }
+  
   if (todayDisplay) {
     todayDisplay.textContent = `${month}月${day}日 の空き一覧`;
+    
+    // 🔄 【新機能】today.html（空き一覧画面）が開かれた場合、記憶したデータから「〇」を復元する
+    loadRoomStatusToDOM();
   }
-
+  
   // 💡 日付が決まったあとに、部屋データの振り分けを実行する
   initRoomTable();
 });
@@ -188,8 +193,7 @@ function initRoomTable() {
   }
 }
 
-//保存、キャンセル
-// 💡 予約ボタンを押したときの処理（イメージ）
+// 💡 予約処理用の関数
 function dorequestReservation() {
   const groupName = document.getElementById("group-name").value.trim();
   if (!groupName) {
@@ -197,9 +201,8 @@ function dorequestReservation() {
     return;
   }
 
-  // 保存する予約データを作る
   const newReservation = {
-    id: Date.now(), // 👈 キャンセルするときに見分けるための固有番号
+    id: Date.now(),
     year: year,
     month: month,
     day: day,
@@ -208,16 +211,42 @@ function dorequestReservation() {
     group: groupName
   };
 
-  // 既存の予約リストをブラウザから読み込む（なければ空っぽの配列）
   let reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
-  
-  // 新しい予約をリストに追加
   reservationList.push(newReservation);
-  
-  // ブラウザに保存する
   localStorage.setItem("reservations", JSON.stringify(reservationList));
 
   alert("予約が完了しました！履歴画面へ移動します。");
-  // 予約履歴ページへジャンプ
   location.href = "history.html";
+}
+
+// 💡 【新機能】データ連動用の関数セット
+const allRooms = ["301", "401", "501", "502", "503", "504", "505", "506", "507", "508", "601", "701", "702", "703", "704", "705", "706", "707", "801", "901", "902"];
+
+function saveCurrentRoomStatus() {
+  const statusData = {};
+  allRooms.forEach(room => {
+    const lunchEl = document.getElementById(`${room}-lunch`);
+    const afterEl = document.getElementById(`${room}-after`);
+    if (lunchEl) statusData[`${room}-lunch`] = lunchEl.textContent.trim();
+    if (afterEl) statusData[`${room}-after`] = afterEl.textContent.trim();
+  });
+  localStorage.setItem("room_status_snapshot", JSON.stringify(statusData));
+}
+
+function loadRoomStatusToDOM() {
+  const savedData = JSON.parse(localStorage.getItem("room_status_snapshot"));
+  if (!savedData) return;
+
+  const hiddenDiv = document.getElementById("hidden-data-container");
+  if (!hiddenDiv) return;
+
+  Object.keys(savedData).forEach(idKey => {
+    let el = document.getElementById(idKey);
+    if (!el) {
+      el = document.createElement("div");
+      el.id = idKey;
+      hiddenDiv.appendChild(el);
+    }
+    el.textContent = savedData[idKey];
+  });
 }
