@@ -1,16 +1,18 @@
+// ==========================================
 // 1. 画面ロード時に日付を決定して表示する
+// ==========================================
 let year, month, day;
 
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   
-  // URLに日付が書いてあるかチェック
+  // 💡 URLに日付が書いてあるかチェック
   if (params.get("year") && params.get("month") && params.get("day")) {
     year = parseInt(params.get("year"));
     month = parseInt(params.get("month"));
     day = parseInt(params.get("day"));
   } else {
-    //  なければ「今日の日付」を自動で取得する
+    // 💡 なければ「今日（リアルな本日の日付）」を自動で取得する！
     const todayObj = new Date();
     year = todayObj.getFullYear();
     month = todayObj.getMonth() + 1; // 月は0から始まるので+1

@@ -40,7 +40,7 @@ function cancelReservation(id) {
 
   let reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
 
-  // 👈 クリックされたID「以外」のデータだけを残す（＝指定されたIDを消す）
+  //  クリックされたID「以外」のデータだけを残す（＝指定されたIDを消す）
   reservationList = reservationList.filter(res => res.id !== id);
 
   // 更新されたリストを再保存

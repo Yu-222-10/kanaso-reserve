@@ -21,7 +21,7 @@ html, body {
   padding: 70px;
   background-color: #ffffff;
   border-radius: 12px;     /* 角を丸く */
-  box-shadow: 0 4px 16px rgba(0,0,0,0.05); /* 優しい影 */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05); /* 影 */
   text-align: center;
   height: auto;
 }
