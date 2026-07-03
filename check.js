@@ -36,7 +36,7 @@ reservationList.forEach((reservation) => {
 }
 
 // 💡 キャンセルボタンが押されたときの関数
-function cancelReservation(id) {
+function deleteReservation(id) {
   if (!confirm("この予約をキャンセルしてもよろしいですか？")) {
     return;
   }
