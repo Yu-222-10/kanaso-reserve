@@ -120,14 +120,22 @@ input[type="text"] {
 
 /* 部屋 room.html*/
 .room-wrapper {
-  overflow: auto;
   padding: 50px 40px ;
 }
 
 .room-container {
-  height: auto;
+  max-height: 70vh;        /* 画面の高さの70%までにサイズを制限する（これを超えると縮む） */
+  overflow-y: auto;        /* 縦方向に中身がはみ出た時だけスクロールバーを出す */
   text-align: left;
-  overflow: auto;
+  overflow-y: auto;
+}
+
+.room-container::-webkit-scrollbar {
+  width: 6px;
+}
+.room-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
 }
 .room-wrapper h2 {
   
