@@ -195,31 +195,7 @@ function initRoomTable() {
   }
 }
 
-// 💡 予約処理用の関数
-function dorequestReservation() {
-  const groupName = document.getElementById("group-name").value.trim();
-  if (!groupName) {
-    alert("団体名を入力してください。");
-    return;
-  }
 
-  const newReservation = {
-    id: Date.now(),
-    year: year,
-    month: month,
-    day: day,
-    room: roomNum,
-    time: time,
-    group: groupName
-  };
-
-  let reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
-  reservationList.push(newReservation);
-  localStorage.setItem("reservations", JSON.stringify(reservationList));
-
-  alert("予約が完了しました！履歴画面へ移動します。");
-  location.href = "history.html";
-}
 
 // 💡 【新機能】データ連動用の関数セット
 const allRooms = ["301", "401", "501", "502", "503", "504", "505", "506", "507", "508", "601", "701", "702", "703", "704", "705", "706", "707", "801", "901", "902"];

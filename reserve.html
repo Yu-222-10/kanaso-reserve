@@ -17,63 +17,67 @@
      <form id="reserve-form">
       <h2>団体名</h2>
       <input type="text" id="name" name="name" required autocomplete="organization">
-      <p><input type= "submit" value="予約する" ></p>
+      <p>
+          <button type="button" class="reserve-btn" onclick="requestReservation()">予約する</button>
+      </p>
       <a href="javascript:history.back()">戻る</a>
      </form>
      
     </div>
   </div>
 
-
    <script>
     const params = new URLSearchParams(window.location.search);
     const year = params.get('year') || new Date().getFullYear();
-    const dateStr = `${params.get('month')}月${params.get('day')}日`;
+    // 💡 あとで保存する時のために、月と日もそれぞれ数値などで取っておきます
+    const month = params.get('month');
+    const day = params.get('day');
+    
+    const dateStr = `${month}月${day}日`;
     const room = params.get('room');
     const time = params.get('time');
 
     // 画面のタイトルを書き換える
-    if (dateStr && room && time) {
+    if (month && room && time) {
       document.getElementById('yoyaku-info').innerText = `${dateStr} ${time} ${room}`;
     } else {
       document.getElementById('yoyaku-info').innerText = `予約情報の取得に失敗しました`;
     }
 
-    // 2. 「予約する」ボタンが押された時の動き（保存 ＆ 画面移動）
-    document.getElementById('reserve-form').onsubmit = function(e) {
-        e.preventDefault(); // ページが勝手に切り替わるのを防ぐ
-        
+    // 🎯 ボタンを押した時に呼び出される「本物の関数」をここに定義しました！
+    function requestReservation() {
         const groupName = document.getElementById('name').value.trim();
         if (!groupName) {
             alert("団体名を入力してください。");
             return;
         }
 
-// 2. 保存するための予約データ（箱）を作る
-  const newReservation = {
-    id: Date.now(), // キャンセル用の一意のID
-    year: year,
-    month: month,
-    day: day,
-    room: room,
-    time: time,
-    group: groupName
-  };
+        // 2. 保存するための予約データ（箱）を作る
+        const newReservation = {
+          id: String(Date.now()), // キャンセルのバグを防ぐために文字列にしておきます
+          year: year,
+          month: month,
+          day: day,
+          room: room || "未指定",
+          time: time || "未指定",
+          group: groupName
+        };
 
-  // 3. ブラウザから今までの予約リストを読み込む
-  let reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
-  
-  // 4. 新しい予約をリストに追加する
-  reservationList.push(newReservation);
-  
-  // 5. ブラウザに最新のリストを保存する
-  localStorage.setItem("reservations", JSON.stringify(reservationList));
- 
+        // 3. ブラウザから今までの予約リストを読み込む
+        let reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
+        
+        // 4. 新しい予約をリストに追加する
+        reservationList.push(newReservation);
+        
+        // 5. ブラウザに最新のリストを保存する
+        localStorage.setItem("reservations", JSON.stringify(reservationList));
+        
+        alert("予約が完了しました！");
         
         // 完了画面 (end.html) にすべての情報を引き継いで移動
-        location.href = `end.html?date=${dateStr}&room=${room}&time=${time}&name=${groupName}`;
-    };
+        location.href = `end.html?date=${encodeURIComponent(dateStr)}&room=${encodeURIComponent(room)}&time=${encodeURIComponent(time)}&name=${encodeURIComponent(groupName)}`;
+    }
   </script>
 
   </body>
- </html> 
+</html>
