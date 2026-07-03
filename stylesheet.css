@@ -373,7 +373,7 @@ h1 {
     font-size: 20px;
   }
  #selected-date, #today-date {
-    font-size: 16px; 
+    font: size 20px;
   }
   container, .room-container {
     padding-left: 10px;  /* 💡 完全に0にするか、好みに合わせて10pxくらいに */
