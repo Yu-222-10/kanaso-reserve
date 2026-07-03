@@ -1,12 +1,11 @@
 // ==========================================
-// 1. URLから選ばれた日付（〇月〇日）を取得する
+// room.html 専用の処理（アコーディオン画面用）
 // ==========================================
 let year, month, day;
 
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   
-  // URLに日付があればそれを使い、なければ今日の日付にする
   if (params.get("year") && params.get("month") && params.get("day")) {
     year = parseInt(params.get("year"));
     month = parseInt(params.get("month"));
@@ -18,85 +17,61 @@ document.addEventListener("DOMContentLoaded", () => {
     day = todayObj.getDate();
   }
 
-  // 📄 today.html（空き一覧画面）のタイトルを書き換える
-  const todayDisplay = document.getElementById("today-date");
-  if (todayDisplay) {
-    todayDisplay.textContent = `${month}月${day}日 の空き一覧`;
+  const dateDisplay = document.getElementById("selected-date");
+  if (dateDisplay) {
+    dateDisplay.textContent = `${year}年${month}月${day}日の使用状況`;
   }
-  
-  // 🎯 画面が開かれたら、自動でその日の空き部屋を計算して表を作る！
-  renderAvailableRooms();
+
+  // 💾 ページが開かれたら、ローカルストレージの予約データをもとに〇✕を最新状態に書き換える
+  updateRoomTableStatus();
 });
 
-// ==========================================
-// 2. すべての教室リスト
-// ==========================================
-const allRooms = [
-  "301", "401", "501", "502", "503", "504", "505", "506", "507", "508", 
-  "601", "701", "702", "703", "704", "705", "706", "707", "801", "901", "902"
-];
+// 🎯 アコーディオンの〇✕マスをクリックした時に予約画面へ飛ばす命令
+function goReservation(roomNum, time) {
+  // 今日の日付（判定用）
+  const todayObj = new Date();
+  const todayTarget = new Date(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate());
+  const selectedTarget = new Date(year, month - 1, day);
 
-// ==========================================
-// 3. 予約データから「その日、その時間に空いている部屋」だけを表に並べる処理
-// ==========================================
-function renderAvailableRooms() {
-  const lunchTbody = document.getElementById('lunch-list');
-  const afterTbody = document.getElementById('afterschool-list');
+  if (selectedTarget < todayTarget) {
+    alert("過去の日付は予約できません。");
+    return; 
+  }
 
-  if (!lunchTbody || !afterTbody) return;
+  // 予約状況をチェックして、空いていれば予約画面へ
+  const suffix = (time === '昼休み') ? '-lunch' : '-after';
+  const cellId = roomNum + suffix;
+  const targetCell = document.getElementById(cellId);
 
-  // 画面のテーブルを一度綺麗にリセット
-  lunchTbody.innerHTML = "";
-  afterTbody.innerHTML = "";
+  if (targetCell && targetCell.textContent.trim() === "○") {
+    location.href = `reserve.html?year=${year}&month=${month}&day=${day}&room=${roomNum}&time=${time}`;
+  }
+}
 
-  // 💾 ブラウザに保存されている「すでに予約されたリスト」を取得
+// 💾 予約データを見て、画面上のテーブルの〇✕をリアルタイムに更新する関数
+function updateRoomTableStatus() {
   const reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
+  
+  const allRooms = ["301", "401", "501", "502", "503", "504", "505", "506", "507", "508", "601", "701", "702", "703", "704", "705", "706", "707", "801", "901", "902"];
 
-  // 全教室（301〜902）をループで1つずつチェック
-  allRooms.forEach(roomNum => {
-    
-    // 🤔 1. この部屋の「昼休み」はすでに誰かに予約されているか？
-    const isLunchReserved = reservationList.some(res => 
-      String(res.year) === String(year) &&
-      String(res.month) === String(month) &&
-      String(res.day) === String(day) &&
-      res.room === roomNum &&
-      res.time === "昼休み"
+  allRooms.forEach(room => {
+    const lunchEl = document.getElementById(`${room}-lunch`);
+    const afterEl = document.getElementById(`${room}-after`);
+
+    // 昼休みの予約があるかチェック
+    const hasLunch = reservationList.some(res => 
+      String(res.year) === String(year) && String(res.month) === String(month) && String(res.day) === String(day) && res.room === room && res.time === "昼休み"
     );
-
-    // 🤔 2. この部屋の「放課後」はすでに誰かに予約されているか？
-    const isAfterReserved = reservationList.some(res => 
-      String(res.year) === String(year) &&
-      String(res.month) === String(month) &&
-      String(res.day) === String(day) &&
-      res.room === roomNum &&
-      res.time === "放課後"
-    );
-
-    // ✅ 昼休みが予約されていなければ（空いていれば）、表にボタンとして追加
-    if (!isLunchReserved) {
-      const tr = document.createElement('tr');
-      tr.style.cursor = "pointer";
-      tr.innerHTML = `<td>${roomNum}</td>`;
-      
-      // クリックしたらその日付・その部屋の情報を持ったまま予約画面（reserve.html）へ
-      tr.addEventListener('click', () => {
-        location.href = `reserve.html?year=${year}&month=${month}&day=${day}&room=${roomNum}&time=昼休み`;
-      });
-      lunchTbody.appendChild(tr);
+    if (lunchEl) {
+      lunchEl.textContent = hasLunch ? "×" : "〇"; // 予約があれば✕、なければ〇
     }
 
-    // ✅ 放課後が予約されていなければ（空いていれば）、表にボタンとして追加
-    if (!isAfterReserved) {
-      const tr = document.createElement('tr');
-      tr.style.cursor = "pointer";
-      tr.innerHTML = `<td>${roomNum}</td>`;
-      
-      // クリックしたらその日付・その部屋の情報を持ったまま予約画面（reserve.html）へ
-      tr.addEventListener('click', () => {
-        location.href = `reserve.html?year=${year}&month=${month}&day=${day}&room=${roomNum}&time=放課後`;
-      });
-      afterTbody.appendChild(tr);
+    // 放課後の予約があるかチェック
+    const hasAfter = reservationList.some(res => 
+      String(res.year) === String(year) && String(res.month) === String(month) && String(res.day) === String(day) && res.room === room && res.time === "放課後"
+    );
+    if (afterEl) {
+      afterEl.textContent = hasAfter ? "×" : "〇"; // 予約があれば✕、なければ〇
     }
   });
 }
