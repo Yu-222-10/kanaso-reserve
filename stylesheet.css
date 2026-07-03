@@ -295,7 +295,7 @@ a[href="javascript:history.back()"]:hover {
 
 /* 予約するボタン（submitボタン）のスタイル*/
 
-input[type="submit"] {
+.reserve-btn{
   display: inline-block;
   width: 100%;             /* 横幅いっぱいに広げて押しやすく */
   max-width: 300px;        /* 広がりすぎないように制限 */

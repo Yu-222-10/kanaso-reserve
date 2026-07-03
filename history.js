@@ -15,21 +15,24 @@ function displayHistory() {
     return;
   }
 
-  // データを一件ずつ表の行（tr）にして追加していく
-  reservationList.forEach(res => {
-    const tr = document.createElement("tr");
+  // ⭕ 履歴を正しくテーブルに表示する処理の例
+reservationList.forEach((reservation) => {
+  const tr = document.createElement("tr");
 
-    tr.innerHTML = `
-      <td>${res.year}年${res.month}月${res.day}日</td>
-      <td>${res.room}</td>
-      <td>${res.time}</td>
-      <td>${res.group}</td>
-      <td>
-        <button class="cancel-btn" onclick="cancelReservation('${res.id}')">キャンセル</button>
-      </td>
-    `;
-    tbody.appendChild(tr);
-  });
+  // 保存したデータ（year, month, day, time, room, group）を順番にトントンと入れる
+  tr.innerHTML = `
+    <td>${reservation.year}年${reservation.month}月${reservation.day}日</td>
+    <td>${reservation.time}</td>
+    <td>${reservation.room}</td>
+    <td>${reservation.group}</td>
+    <td><button onclick="deleteReservation('${reservation.id}')" class="cancel-btn">キャンセル</button></td>
+  `;
+  
+  // テーブルの要素（tbodyなど）に追加する
+  document.getElementById("reservation-table-body").appendChild(tr);
+});
+
+    
 }
 
 // 💡 キャンセルボタンが押されたときの関数
