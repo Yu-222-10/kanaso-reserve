@@ -127,7 +127,6 @@ input[type="text"] {
   max-height: 70vh;        /* 画面の高さの70%までにサイズを制限する（これを超えると縮む） */
   overflow-y: auto;        /* 縦方向に中身がはみ出た時だけスクロールバーを出す */
   text-align: left;
-  overflow-y: auto;
 }
 
 .room-container::-webkit-scrollbar {
@@ -395,6 +394,7 @@ h1 {
   /* スマホのときは真ん中寄せにしてスッキリ見せる */
   .top-wrapper {
     text-align: center;
+    padding: 20px 10px;
   }
 
 .room-js-text{
