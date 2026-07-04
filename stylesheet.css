@@ -216,7 +216,8 @@ input[type="text"] {
 .c-wrapper th {
     color: #241f1f;
 }
-.c-wrapper th,.c-wrapper td {
+.c-wrapper th,
+.c-wrapper td {
     outline: 1px solid #ddd;
     padding-top: 10px;
     padding-bottom: 10px;
