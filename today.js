@@ -70,14 +70,14 @@ function renderAvailableRooms() {
 
     // ② 昼休みのマス（空いていたら予約ボタン、埋まっていたら✕）
     if (!isLunchReserved) {
-      htmlContent += `<td style="text-align: center;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '昼休み')">〇</button></td>`;
+      htmlContent += `<td style="text-align: center;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '昼休み')"style="background-color: #ffffff;">〇</button></td>`;
     } else {
       htmlContent += `<td style="color: #3333 !important; font-weight: bold; text-align: center;">✕</td>`;
     }
 
     // ③ 放課後のマス（空いていたら予約ボタン、埋まっていたら✕）
     if (!isAfterReserved) {
-      htmlContent += `<td style="text-align: center;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '放課後')">〇</button></td>`;
+      htmlContent += `<td style="text-align: center;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '放課後')"style="background-color: #ffffff;">〇</button></td>`;
     } else {
       htmlContent += `<td style="color: #3333 !important; font-weight: bold; text-align: center;">✕</td>`;
     }

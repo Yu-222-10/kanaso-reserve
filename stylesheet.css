@@ -121,9 +121,10 @@ input[type="text"] {
 /* 部屋 room.html*/
 header{
   padding-top: 0;
-  height: auto;
+  height: auto !important;
   position: fixed;
   margin: 0;
+  width: 100%;
 }
 .room-wrapper {
   padding: 50px 40px ;
@@ -417,6 +418,9 @@ h1 {
  .room-js-text{
     width: 25%;
     
+  }
+ summary{
+  font-size: 20px;
   }
   }
 
