@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
     day = todayObj.getDate();
   }
 
-  // 💡 id="today-date" のテキストを更新
+  // id="today-date" のテキストを更新
   const todayDisplay = document.getElementById("today-date");
   if (todayDisplay) {
     todayDisplay.textContent = `${month}月${day}日 の空き状況`;
   }
   
-  // 💾 テーブルの中身を書き出す
+  // テーブルの中身を書き出す
   renderAvailableRooms();
 });
 
@@ -33,18 +33,18 @@ const allRooms = [
 ];
 
 function renderAvailableRooms() {
-  // 🎯 HTML側の新テーブルの受け皿をキャッチ！
+  // HTML側の新テーブルの受け皿をキャッチ
   const tbody = document.getElementById('today-room-list');
 
   if (!tbody) return;
 
-  // 🧹 最初にしっかり中身をリセットして空白にする
+  // 最初の中身をリセットして空白にする
   tbody.innerHTML = "";
 
   const reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
 
   allRooms.forEach(roomNum => {
-    //昼休みの予約があるかチェック（数値型・文字列型のズレを完全に排除）
+    // 昼休みの予約があるかチェック（数値型・文字列型のズレを完全に排除）
     const isLunchReserved = reservationList.some(res => 
       parseInt(res.year, 10) === parseInt(year, 10) &&
       parseInt(res.month, 10) === parseInt(month, 10) &&
@@ -62,32 +62,32 @@ function renderAvailableRooms() {
       res.time === "放課後"
     );
  
-    // 1つの行（tr）を作って、教室名・昼・放課後を横に並べる！
+    // 1つの行（tr）を作って、教室名・昼・放課後を横に並べる
     const tr = document.createElement('tr');
     
-    // ① 教室名のマス（見えないバグを防ぐため、文字色を #333 に強制固定）
-    let htmlContent = `<td style="color: #333333 !important; font-weight: bold; text-align: center;">${roomNum}</td>`;
+    // ① 教室名のマス（全体調整に合わせてフォントサイズを18pxに拡大）
+    let htmlContent = `<td style="color: #3a3737 !important; font-weight: bold; text-align: center; font-size: 18px; padding: 12px 0;">${roomNum}</td>`;
 
-    // ② 昼休みのマス（空いていたら予約ボタン、埋まっていたら✕）
+    // ② 昼休みのマス（外枠を消し、サイズを大きく調整）
     if (!isLunchReserved) {
-      htmlContent += `<td style="text-align: center;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '昼休み')"style="background-color: #ffffff;">〇</button></td>`;
+      htmlContent += `<td style="text-align: center; padding: 12px 0;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '昼休み')" style="background-color: #ffffff; border: none; font-size: 22px; cursor: pointer; padding: 0; width: 40px; height: 40px; line-height: 40px;">〇</button></td>`;
     } else {
-      htmlContent += `<td style="color: #333333 !important; font-weight: bold; text-align: center;">✕</td>`;
+      htmlContent += `<td style="color: #3a3737 !important; font-weight: bold; text-align: center; font-size: 20px; padding: 12px 0;">✕</td>`;
     }
 
-    // ③ 放課後のマス（空いていたら予約ボタン、埋まっていたら✕）
+    // ③ 放課後のマス（外枠を消し、サイズを大きく調整）
     if (!isAfterReserved) {
-      htmlContent += `<td style="text-align: center;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '放課後')"style="background-color: #ffffff;">〇</button></td>`;
+      htmlContent += `<td style="text-align: center; padding: 12px 0;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '放課後')" style="background-color: #ffffff; border: none; font-size: 22px; cursor: pointer; padding: 0; width: 40px; height: 40px; line-height: 40px;">〇</button></td>`;
     } else {
-      htmlContent += `<td style="color: #333333 !important; font-weight: bold; text-align: center;">✕</td>`;
+      htmlContent += `<td style="color: #3a3737 !important; font-weight: bold; text-align: center; font-size: 20px; padding: 12px 0;">✕</td>`;
     }
 
     tr.innerHTML = htmlContent;
-    tbody.appendChild(tr); // 🎯 綺麗に整った1行をテーブルにガチッと合体！
+    tbody.appendChild(tr); // 綺麗に整った1行をテーブルに合体
   }); 
 }
 
-// 🎯 ボタンを押した時に安全に予約画面へジャンプする関数
+// ボタンを押した時に安全に予約画面へジャンプする関数
 window.goToReservePage = function(roomNum, time) {
   location.href = `reserve.html?year=${year}&month=${month}&day=${day}&room=${roomNum}&time=${time}`;
 };

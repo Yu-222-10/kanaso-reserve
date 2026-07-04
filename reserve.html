@@ -28,23 +28,22 @@
 
    <script>
     const params = new URLSearchParams(window.location.search);
-    const year = (params.get('year'), 10) || new Date().getFullYear();
-    // 💡 あとで保存する時のために、月と日もそれぞれ数値などで取っておきます
-    const month = (params.get('month'), 10);
-    const day = (params.get('day'), 10);
     
+    const year = parseInt(params.get('year'), 10) || new Date().getFullYear();
+    const month = parseInt(params.get('month'), 10);
+    const day = parseInt(params.get('day'), 10);
     const dateStr = `${month}月${day}日`;
     const room = params.get('room');
     const time = params.get('time');
 
-    // 画面のタイトルを書き換える
+    // 画面のタイトルを書き換える（号室が見やすいように文字を微調整）
     if (month && room && time) {
-      document.getElementById('yoyaku-info').innerText = `${dateStr} ${time} ${room}`;
+      document.getElementById('yoyaku-info').innerText = `${dateStr} ${time} ${room}号室`;
     } else {
       document.getElementById('yoyaku-info').innerText = `予約情報の取得に失敗しました`;
     }
 
-    // 🎯 ボタンを押した時に呼び出される「本物の関数」をここに定義しました！
+    // 🎯 ボタンを押した時に呼び出される関数
     function requestReservation() {
         const groupName = document.getElementById('name').value.trim();
         if (!groupName) {
@@ -55,10 +54,10 @@
         // 2. 保存するための予約データ（箱）を作る
         const newReservation = {
           id: String(Date.now()), // キャンセルのバグを防ぐために文字列にしておきます
-          year:String(year),
-          month:String(month),
-          day:String(day),
-          room: room ? String(room).replace("号室", "") : "未指定" ,
+          year: String(year),
+          month: String(month),
+          day: String(day),
+          room: room ? String(room).replace("号室", "") : "未指定",
           time: time || "未指定",
           group: groupName
         };
@@ -71,8 +70,6 @@
         
         // 5. ブラウザに最新のリストを保存する
         localStorage.setItem("reservations", JSON.stringify(reservationList));
-        
-        
         
         // 完了画面 (end.html) にすべての情報を引き継いで移動
         location.href = `end.html?date=${encodeURIComponent(dateStr)}&room=${encodeURIComponent(room)}&time=${encodeURIComponent(time)}&name=${encodeURIComponent(groupName)}`;

@@ -64,7 +64,7 @@ h3 {
   color: #7f8c8d;
   margin-top: 20px;
   margin-bottom: 5px;
-  text-align: ; /* ラベルっぽく左寄せ */
+  
 }
 .start {
   background-color:#5a87ab;
@@ -222,15 +222,14 @@ header{
 .c-wrapper th {
     color: #241f1f;
 }
-.c-wrapper th,
-.c-wrapper td {
+.c-wrapper th, td {
     outline: 1px solid #ddd;
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
 } 
 
-.calender td:hover {
+.calendar td:hover {
   background-color: #c4d7eb; /* マウスを乗せたときに少し青くして反応をわかりやすく */
 }
 
