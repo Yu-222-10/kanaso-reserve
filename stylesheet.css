@@ -384,12 +384,17 @@ h1 {
     font-size: 20px;
   }
  #selected-date, #today-date {
-    font: size 15px;
+    font-size: 15px;
   }
   .container, .room-container {
     padding-left: 10px;  /* 💡 完全に0にするか、好みに合わせて10pxくらいに */
     padding-right: 10px;
     width: 100%;         /* 横幅いっぱいに広げる */
+  }
+
+  .room-container::-webkit-scrollbar {
+    display: none !important; /* 👈 スクロールバーを完全に消し去る魔法の1行 */
+    width: 0 !important;
   }
   /* スマホのときは真ん中寄せにしてスッキリ見せる */
   .top-wrapper {
@@ -397,7 +402,7 @@ h1 {
     padding: 20px 10px;
   }
 
-.room-js-text{
+ .room-js-text{
     width: 25%;
     
   }
