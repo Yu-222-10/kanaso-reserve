@@ -44,25 +44,25 @@ function renderAvailableRooms() {
   const reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
 
   allRooms.forEach(roomNum => {
-    // 🔍 昼休みの予約があるかチェック
+    //昼休みの予約があるかチェック（数値型・文字列型のズレを完全に排除）
     const isLunchReserved = reservationList.some(res => 
-      String(res.year) === String(year) &&
-      String(res.month) === String(month) &&
-      String(res.day) === String(day) &&
-      String(res.room) === String(roomNum) &&
+      parseInt(res.year, 10) === parseInt(year, 10) &&
+      parseInt(res.month, 10) === parseInt(month, 10) &&
+      parseInt(res.day, 10) === parseInt(day, 10) &&
+      String(res.room).replace("号室", "") === String(roomNum) &&
       res.time === "昼休み"
     );
 
-    // 🔍 放課後の予約があるかチェック
+    // 放課後の予約があるかチェック
     const isAfterReserved = reservationList.some(res => 
-      String(res.year) === String(year) &&
-      String(res.month) === String(month) &&
-      String(res.day) === String(day) &&
-      String(res.room) === String(roomNum) &&
+      parseInt(res.year, 10) === parseInt(year, 10) &&
+      parseInt(res.month, 10) === parseInt(month, 10) &&
+      parseInt(res.day, 10) === parseInt(day, 10) &&
+      String(res.room).replace("号室", "") === String(roomNum) &&
       res.time === "放課後"
     );
  
-    // 💡 1つの行（tr）を作って、教室名・昼・放課後を横に並べる！
+    // 1つの行（tr）を作って、教室名・昼・放課後を横に並べる！
     const tr = document.createElement('tr');
     
     // ① 教室名のマス（見えないバグを防ぐため、文字色を #333 に強制固定）
@@ -72,14 +72,14 @@ function renderAvailableRooms() {
     if (!isLunchReserved) {
       htmlContent += `<td style="text-align: center;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '昼休み')"style="background-color: #ffffff;">〇</button></td>`;
     } else {
-      htmlContent += `<td style="color: #3333 !important; font-weight: bold; text-align: center;">✕</td>`;
+      htmlContent += `<td style="color: #333333 !important; font-weight: bold; text-align: center;">✕</td>`;
     }
 
     // ③ 放課後のマス（空いていたら予約ボタン、埋まっていたら✕）
     if (!isAfterReserved) {
       htmlContent += `<td style="text-align: center;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '放課後')"style="background-color: #ffffff;">〇</button></td>`;
     } else {
-      htmlContent += `<td style="color: #3333 !important; font-weight: bold; text-align: center;">✕</td>`;
+      htmlContent += `<td style="color: #333333 !important; font-weight: bold; text-align: center;">✕</td>`;
     }
 
     tr.innerHTML = htmlContent;

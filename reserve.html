@@ -28,10 +28,10 @@
 
    <script>
     const params = new URLSearchParams(window.location.search);
-    const year = params.get('year') || new Date().getFullYear();
+    const year = (params.get('year'), 10) || new Date().getFullYear();
     // 💡 あとで保存する時のために、月と日もそれぞれ数値などで取っておきます
-    const month = params.get('month');
-    const day = params.get('day');
+    const month = (params.get('month'), 10);
+    const day = (params.get('day'), 10);
     
     const dateStr = `${month}月${day}日`;
     const room = params.get('room');
@@ -55,10 +55,10 @@
         // 2. 保存するための予約データ（箱）を作る
         const newReservation = {
           id: String(Date.now()), // キャンセルのバグを防ぐために文字列にしておきます
-          year: year,
-          month: month,
-          day: day,
-          room: room || "未指定",
+          year:String(year),
+          month:String(month),
+          day:String(day),
+          room: room ? String(room).replace("号室", "") : "未指定" ,
           time: time || "未指定",
           group: groupName
         };
