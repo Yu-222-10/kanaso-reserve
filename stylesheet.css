@@ -384,12 +384,18 @@ h1 {
     font-size: 20px;
   }
  #selected-date, #today-date {
-    font-size: 15px;
+    font-size: 20px;
   }
   .container, .room-container {
     padding-left: 10px;  /* 💡 完全に0にするか、好みに合わせて10pxくらいに */
     padding-right: 10px;
     width: 100%;         /* 横幅いっぱいに広げる */
+  }
+
+  .room-container {
+    overflow-y: auto;
+    width: 100%;
+    margin: 10px auto;
   }
 
   .room-container::-webkit-scrollbar {
