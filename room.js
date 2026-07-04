@@ -43,7 +43,7 @@ function goReservation(roomNum, time) {
   const cellId = roomNum + suffix;
   const targetCell = document.getElementById(cellId);
 
-  if (targetCell && targetCell.textContent.trim() === "○") {
+  if (targetCell && targetCell.textContent.trim() === "〇") {
     location.href = `reserve.html?year=${year}&month=${month}&day=${day}&room=${roomNum}&time=${time}`;
   }
 }

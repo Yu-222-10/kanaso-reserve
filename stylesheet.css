@@ -152,6 +152,7 @@ input[type="text"] {
   font-size: 30px;
 }
 
+.today
 .room {
   width: 90%;
   border-collapse: collapse;
@@ -159,16 +160,21 @@ input[type="text"] {
   border-spacing: 0;
   margin-bottom: 20px;
 }
+
+.today th,
 .room th {
   padding: 10px;
   border-bottom: solid 3px;
   color: #778ca3 !important;
 }
+
+.today tbody,
 .room td {
   padding: 10px;
   border-bottom: solid 1px #778ca3 !important;
   
 }
+.today tbody.available:hover,
 .room td.available:hover {
   background-color: #f0f7ff; /* マウスを乗せたときに少し青くして反応をわかりやすく */
 }
@@ -373,7 +379,7 @@ h1 {
     font-size: 20px;
   }
  #selected-date, #today-date {
-    font: size 20px;
+    font: size 17px;
   }
   container, .room-container {
     padding-left: 10px;  /* 💡 完全に0にするか、好みに合わせて10pxくらいに */
