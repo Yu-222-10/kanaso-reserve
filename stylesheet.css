@@ -209,9 +209,9 @@ input[type="text"] {
     width: 100%;
 }
 .c-wrapper th {
-    color: #100f0f;
+    color: #241f1f;
 }
-.c-wrapper th, td {
+.c-wrapper th,.c-wrapper td {
     outline: 1px solid #ddd;
     padding-top: 10px;
     padding-bottom: 10px;
