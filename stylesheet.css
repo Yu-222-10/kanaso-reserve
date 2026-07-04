@@ -227,7 +227,7 @@ header{
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
-}
+} 
 
 .carender td:hover {
   background-color: #c4d7eb; /* マウスを乗せたときに少し青くして反応をわかりやすく */

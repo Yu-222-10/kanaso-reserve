@@ -61,7 +61,7 @@ function renderAvailableRooms() {
       String(res.room) === String(roomNum) &&
       res.time === "放課後"
     );
-
+ 
     // 💡 1つの行（tr）を作って、教室名・昼・放課後を横に並べる！
     const tr = document.createElement('tr');
     

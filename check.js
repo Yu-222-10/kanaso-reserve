@@ -10,7 +10,7 @@ function displayHistory() {
   reservationList.forEach((res, index) => {
   const tr = document.createElement("tr");
 
-  //4つの td を作り、文字色をクッキリさせてボタンと並べる
+  //4つの td を作り、文字色をクッキリさせてボタンと並べる 
   tr.innerHTML = `
     <td style="color: #333333 !important;">${res.year}/${res.month}/${res.day}</td>
     <td style="color: #333333 !important; font-weight: bold;">${res.room}号室</td>
