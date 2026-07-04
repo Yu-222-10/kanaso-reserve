@@ -387,7 +387,7 @@ h1 {
  #selected-date, #today-date {
     font: size 15px;
   }
-  container, .room-container {
+  .container, .room-container {
     padding-left: 10px;  /* 💡 完全に0にするか、好みに合わせて10pxくらいに */
     padding-right: 10px;
     width: 100%;         /* 横幅いっぱいに広げる */
