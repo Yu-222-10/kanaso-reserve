@@ -119,6 +119,10 @@ input[type="text"] {
 }
 
 /* 部屋 room.html*/
+header{
+  padding-top: 0;
+  position: fixed;
+}
 .room-wrapper {
   padding: 50px 40px ;
 }
@@ -384,7 +388,7 @@ h1 {
     font-size: 20px;
   }
  #selected-date, #today-date {
-    font-size: 20px;
+    font-size: 21px;
   }
   .container, .room-container {
     padding-left: 10px;  /* 💡 完全に0にするか、好みに合わせて10pxくらいに */
@@ -395,7 +399,7 @@ h1 {
   .room-container {
     overflow-y: auto;
     width: 100%;
-    margin: 10px auto;
+    margin: 10px;
   }
 
   .room-container::-webkit-scrollbar {
