@@ -66,20 +66,20 @@ function renderAvailableRooms() {
     const tr = document.createElement('tr');
     
     // ① 教室名のマス（見えないバグを防ぐため、文字色を #333 に強制固定）
-    let htmlContent = `<td style="color: #333333 !important; font-weight: bold; text-align: center;">${roomNum}号室</td>`;
+    let htmlContent = `<td style="color: #333333 !important; font-weight: bold; text-align: center;">${roomNum}</td>`;
 
     // ② 昼休みのマス（空いていたら予約ボタン、埋まっていたら✕）
     if (!isLunchReserved) {
-      htmlContent += `<td style="text-align: center;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '昼休み')">予約</button></td>`;
+      htmlContent += `<td style="text-align: center;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '昼休み')">〇</button></td>`;
     } else {
-      htmlContent += `<td style="color: #e74c3c !important; font-weight: bold; text-align: center;">✕</td>`;
+      htmlContent += `<td style="color: #3333 !important; font-weight: bold; text-align: center;">✕</td>`;
     }
 
     // ③ 放課後のマス（空いていたら予約ボタン、埋まっていたら✕）
     if (!isAfterReserved) {
-      htmlContent += `<td style="text-align: center;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '放課後')">予約</button></td>`;
+      htmlContent += `<td style="text-align: center;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '放課後')">〇</button></td>`;
     } else {
-      htmlContent += `<td style="color: #e74c3c !important; font-weight: bold; text-align: center;">✕</td>`;
+      htmlContent += `<td style="color: #3333 !important; font-weight: bold; text-align: center;">✕</td>`;
     }
 
     tr.innerHTML = htmlContent;
