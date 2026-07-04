@@ -152,7 +152,7 @@ input[type="text"] {
   font-size: 30px;
 }
 
-.today
+.today,
 .room {
   width: 90%;
   border-collapse: collapse;

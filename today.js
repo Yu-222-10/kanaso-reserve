@@ -77,5 +77,5 @@ function renderAvailableRooms() {
       });
       afterTbody.appendChild(tr);
     }
-  });
+  }); 
 }
