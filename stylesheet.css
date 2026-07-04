@@ -152,6 +152,7 @@ input[type="text"] {
   font-size: 30px;
 }
 
+.check,
 .today,
 .room {
   width: 90%;
@@ -161,6 +162,7 @@ input[type="text"] {
   margin-bottom: 20px;
 }
 
+.check th, 
 .today th,
 .room th {
   padding: 10px;
@@ -168,12 +170,15 @@ input[type="text"] {
   color: #778ca3 !important;
 }
 
+.check tbody,
 .today tbody,
 .room td {
   padding: 10px;
   border-bottom: solid 1px #778ca3 !important;
   
 }
+
+.check tbody.available:hover,
 .today tbody.available:hover,
 .room td.available:hover {
   background-color: #f0f7ff; /* マウスを乗せたときに少し青くして反応をわかりやすく */
