@@ -107,9 +107,9 @@ input[type="text"] {
 }
 .btn-wrapper {
   display: flex;
-  flex-direction: column; /* 💡 縦に並べる */
-  align-items: center;    /* 💡 真ん中に揃える */
-  gap: 15px;              /* 💡 ボタン同士の間隔を15px空ける */
+  flex-direction: column; /* 縦に並べる */
+  align-items: center;    /* 真ん中に揃える */
+  gap: 15px;              /* ボタン同士の間隔を15px空ける */
   margin-top: 30px;
   width: 100%;            /* 全体の横幅を確保 */
 }

@@ -29,7 +29,7 @@ reservationList.forEach((reservation) => {
   `;
   
   // テーブルの要素（tbodyなど）に追加する
-  document.getElementById("reservation-table-body").appendChild(tr);
+  document.getElementById("history-list").appendChild(tr);
 });
 
     

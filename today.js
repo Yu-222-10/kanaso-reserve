@@ -1,5 +1,5 @@
 // ==========================================
-// today.html 専用の処理（空き一覧を表示する）
+// today.html 専用：空き一覧テーブル自動生成コード
 // ==========================================
 let year, month, day;
 
@@ -17,11 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
     day = todayObj.getDate();
   }
 
+  // 💡 id="today-date" のテキストを更新
   const todayDisplay = document.getElementById("today-date");
   if (todayDisplay) {
-    todayDisplay.textContent = `${month}月${day}日 の空き一覧`;
+    todayDisplay.textContent = `${month}月${day}日 の空き状況`;
   }
   
+  // 💾 テーブルの中身を書き出す
   renderAvailableRooms();
 });
 
@@ -31,51 +33,61 @@ const allRooms = [
 ];
 
 function renderAvailableRooms() {
-  const lunchTbody = document.getElementById('lunch-list');
-  const afterTbody = document.getElementById('afterschool-list');
+  // 🎯 HTML側の新テーブルの1つの受け皿をしっかりキャッチ！
+  const tbody = document.getElementById('today-room-list');
 
-  if (!lunchTbody || !afterTbody) return;
+  if (!tbody) return;
 
-  lunchTbody.innerHTML = "";
-  afterTbody.innerHTML = "";
+  // 🧹 最初にしっかり中身をリセットして空白にする（正常な処理！）
+  tbody.innerHTML = "";
 
   const reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
 
   allRooms.forEach(roomNum => {
+    // 🔍 昼休みの予約があるかチェック
     const isLunchReserved = reservationList.some(res => 
       String(res.year) === String(year) &&
       String(res.month) === String(month) &&
       String(res.day) === String(day) &&
-      res.room === roomNum &&
+      String(res.room) === String(roomNum) &&
       res.time === "昼休み"
     );
 
+    // 🔍 放課後の予約があるかチェック
     const isAfterReserved = reservationList.some(res => 
       String(res.year) === String(year) &&
       String(res.month) === String(month) &&
       String(res.day) === String(day) &&
-      res.room === roomNum &&
+      String(res.room) === String(roomNum) &&
       res.time === "放課後"
     );
 
+    // 💡 1つの行（tr）を作って、教室名・昼・放課後を横に並べる！
+    const tr = document.createElement('tr');
+    
+    // ① 教室名のマス
+    let htmlContent = `<td>${roomNum}</td>`;
+
+    // ② 昼休みのマス（空いていたら予約ボタン、埋まっていたら✕）
     if (!isLunchReserved) {
-      const tr = document.createElement('tr');
-      tr.style.cursor = "pointer";
-      tr.innerHTML = `<td>${roomNum}</td>`;
-      tr.addEventListener('click', () => {
-        location.href = `reserve.html?year=${year}&month=${month}&day=${day}&room=${roomNum}&time=昼休み`;
-      });
-      lunchTbody.appendChild(tr);
+      htmlContent += `<td><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '昼休み')">予約</button></td>`;
+    } else {
+      htmlContent += `<td style="color: #e74c3c; font-weight: bold;">✕</td>`;
     }
 
+    // ③ 放課後のマス（空いていたら予約ボタン、埋まっていたら✕）
     if (!isAfterReserved) {
-      const tr = document.createElement('tr');
-      tr.style.cursor = "pointer";
-      tr.innerHTML = `<td>${roomNum}</td>`;
-      tr.addEventListener('click', () => {
-        location.href = `reserve.html?year=${year}&month=${month}&day=${day}&room=${roomNum}&time=放課後`;
-      });
-      afterTbody.appendChild(tr);
+      htmlContent += `<td><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '放課後')">予約</button></td>`;
+    } else {
+      htmlContent += `<td style="color: #e74c3c; font-weight: bold;">✕</td>`;
     }
+
+    tr.innerHTML = htmlContent;
+    tbody.appendChild(tr); // 🎯 綺麗に整った1行をテーブルにガチッと合体！
   }); 
 }
+
+// 🎯 ボタンを押した時に安全に予約画面へジャンプする関数
+window.goToReservePage = function(roomNum, time) {
+  location.href = `reserve.html?year=${year}&month=${month}&day=${day}&room=${roomNum}&time=${time}`;
+};
