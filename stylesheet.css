@@ -446,7 +446,7 @@ h1 {
   font-size: 20px;
   }
   }
-/* 🖥️ PC（大画面）のときだけ適用 */
+/* PC（大画面）のときだけ適用 */
 @media screen and (min-width: 1024px) {
 
   /* ① room-containerの「中にあるすべての要素」のスクロールバーを完全に消す */
