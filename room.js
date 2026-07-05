@@ -51,7 +51,10 @@ function goReservation(roomNum, time) {
 // 💾 予約データを見て、画面上のテーブルの〇✕をリアルタイムに更新する関数
 function updateRoomTableStatus() {
   const reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
-  
+  //
+  alert(`${year}/${month}/${day}`);
+  alert(JSON.stringify(reservationList, null, 2)); 
+  //
   const allRooms = ["301", "401", "501", "502", "503", "504", "505", "506", "507", "508", "601", "701", "702", "703", "704", "705", "706", "707", "801", "901", "902"];
 
   allRooms.forEach(room => {
