@@ -131,6 +131,12 @@ input[type="text"] {
   padding: 50px 40px ;
 }
 
+.scroll-content {
+  max-height: 400px; /* ⚠️カードの中で表示したい最大の高さ（好きな長さに調整してください） */
+  overflow-y: auto;  /* 縦方向に中身がはみ出たら、この箱の中だけでスクロールさせる */
+  padding-top: 10px;
+}
+
 .room-container {
   max-height: 70vh;        /* 画面の高さの70%までにサイズを制限する（これを超えると縮む） */
   overflow-y: auto;        /* 縦方向に中身がはみ出た時だけスクロールバーを出す */
