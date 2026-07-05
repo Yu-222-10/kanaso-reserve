@@ -2,69 +2,74 @@ document.addEventListener("DOMContentLoaded", () => {
   displayHistory();
 });
 
-//履歴を表示する関数
+// 履歴表示
 function displayHistory() {
+
   const tbody = document.getElementById("reservation-list");
-  tbody.innerHTML = ""; // 一度リセット
 
-  reservationList.forEach((res, index) => {
-  const tr = document.createElement("tr");
+  if (!tbody) return;
 
-  //4つの td を作り、文字色をクッキリさせてボタンと並べる 
-  tr.innerHTML = `
-    <td style="color: #333333 !important;">${res.year}/${res.month}/${res.day}</td>
-    <td style="color: #333333 !important; font-weight: bold;">${res.room}号室</td>
-    <td style="color: #333333 !important;">${res.time}</td>
-    <td>
-      <button class="cancel-btn" onclick="cancelReservation(${index})">キャンセル</button>
-    </td>
-  `;
+  tbody.innerHTML = "";
 
-  tbody.appendChild(tr);
-});
+  // ローカルストレージから取得
+  const reservationList =
+    JSON.parse(localStorage.getItem("reservations")) || [];
 
-  // ブラウザから予約リストを読み込む
-  const reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
-
+  // データ無し
   if (reservationList.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5" style="padding:20px; color:#999;">予約履歴はありません。</td></tr>`;
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="5" style="padding:20px; color:#999;">
+          予約履歴はありません。
+        </td>
+      </tr>
+    `;
     return;
   }
 
-  // ⭕ 履歴を正しくテーブルに表示する処理の例
-reservationList.forEach((reservation) => {
-  const tr = document.createElement("tr");
+  // 表示
+  reservationList.forEach((reservation) => {
 
-  // 保存したデータ（year, month, day, time, room, group）を順番にトントンと入れる
-  tr.innerHTML = `
-    <td>${reservation.year}年${reservation.month}月${reservation.day}日</td>
-    <td>${reservation.time}</td>
-    <td>${reservation.room}</td>
-    <td>${reservation.group}</td>
-    <td><button onclick="deleteReservation('${reservation.id}')" class="cancel-btn">キャンセル</button></td>
-  `;
-  
-  // テーブルの要素（tbodyなど）に追加する
-  document.getElementById("history-list").appendChild(tr);
-});
+    const tr = document.createElement("tr");
 
-    
+    tr.innerHTML = `
+      <td>${reservation.year}年${reservation.month}月${reservation.day}日</td>
+      <td>${reservation.room}</td>
+      <td>${reservation.time}</td>
+      <td>${reservation.group || ""}</td>
+      <td>
+        <button
+          class="cancel-btn"
+          onclick="deleteReservation('${reservation.id}')"
+        >
+          キャンセル
+        </button>
+      </td>
+    `;
+
+    tbody.appendChild(tr);
+  });
 }
 
-// 💡 キャンセルボタンが押されたときの関数
+// キャンセル
 function deleteReservation(id) {
-  if (!confirm("この予約をキャンセルしてもよろしいですか？")) {
+
+  if (!confirm("この予約をキャンセルしますか？")) {
     return;
   }
 
-  let reservationList = JSON.parse(localStorage.getItem("reservations")) || [];
+  let reservationList =
+    JSON.parse(localStorage.getItem("reservations")) || [];
 
-  //  クリックされたID「以外」のデータだけを残す（＝指定されたIDを消す）
-  reservationList = reservationList.filter(res => res.id !== id);
+  reservationList =
+    reservationList.filter(res => res.id !== id);
 
-  // 更新されたリストを再保存
-  localStorage.setItem("reservations", JSON.stringify(reservationList));
+  localStorage.setItem(
+    "reservations",
+    JSON.stringify(reservationList)
+  );
 
-  alert("予約をキャンセルしました。");
-  displayHistory(); // 画面の表を更新
+  alert("予約をキャンセルしました");
+
+  displayHistory();
 }

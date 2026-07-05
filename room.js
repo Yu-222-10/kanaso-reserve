@@ -60,7 +60,7 @@ function updateRoomTableStatus() {
 
     // 昼休みの予約があるかチェック
     const hasLunch = reservationList.some(res => 
-      String(res.year) === String(year) && String(res.month) === String(month) && String(res.day) === String(day) && res.room === room && res.time === "昼休み"
+      String(res.year) === String(year) && String(res.month) === String(month) && String(res.day) === String(day) && String(res.room).replace("号室", "") === String(room) && res.time === "昼休み"
     );
     if (lunchEl) {
       lunchEl.textContent = hasLunch ? "×" : "〇"; // 予約があれば✕、なければ〇
@@ -68,7 +68,7 @@ function updateRoomTableStatus() {
 
     // 放課後の予約があるかチェック
     const hasAfter = reservationList.some(res => 
-      String(res.year) === String(year) && String(res.month) === String(month) && String(res.day) === String(day) && res.room === room && res.time === "放課後"
+      String(res.year) === String(year) && String(res.month) === String(month) && String(res.day) === String(day) && String(res.room).replace("号室", "") === String(room) && res.time === "放課後"
     );
     if (afterEl) {
       afterEl.textContent = hasAfter ? "×" : "〇"; // 予約があれば✕、なければ〇

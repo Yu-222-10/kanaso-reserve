@@ -121,10 +121,11 @@ input[type="text"] {
 /* 部屋 room.html*/
 header{
   padding-top: 0;
-  height: auto !important;
-  position: fixed;
-  margin: 0;
+  padding: 8px 0;
+  position: sticky;
   width: 100%;
+  background: #ffffff;
+  z-index: 10000;
 }
 .room-wrapper {
   padding: 50px 40px ;
@@ -231,6 +232,9 @@ header{
 
 .calendar td:hover {
   background-color: #c4d7eb; /* マウスを乗せたときに少し青くして反応をわかりやすく */
+}
+table {
+  table-layout: fixed;
 }
 
 /*日曜日*/

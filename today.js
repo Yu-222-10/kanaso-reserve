@@ -61,7 +61,10 @@ function renderAvailableRooms() {
       String(res.room).replace("号室", "") === String(roomNum) &&
       res.time === "放課後"
     );
- 
+    // 昼も放課後も埋まってたら表示しない
+      if (isLunchReserved && isAfterReserved) {
+      return;
+    }
     // 1つの行（tr）を作って、教室名・昼・放課後を横に並べる
     const tr = document.createElement('tr');
     
@@ -70,14 +73,14 @@ function renderAvailableRooms() {
 
     // ② 昼休みのマス（外枠を消し、サイズを大きく調整）
     if (!isLunchReserved) {
-      htmlContent += `<td style="text-align: center; padding: 12px 0;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '昼休み')" style="background-color: #ffffff; border: none; font-size: 22px; cursor: pointer; padding: 0; width: 40px; height: 40px; line-height: 40px;">〇</button></td>`;
+      htmlContent += `<td style="text-align: center; padding: 12px 0;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '昼休み')" style="color: #3a3737; background-color: #ffffff; border: none; font-size: 22px; cursor: pointer; padding: 0; width: 40px; height: 40px; line-height: 40px;">〇</button></td>`;
     } else {
       htmlContent += `<td style="color: #3a3737 !important; font-weight: bold; text-align: center; font-size: 20px; padding: 12px 0;">✕</td>`;
     }
 
     // ③ 放課後のマス（外枠を消し、サイズを大きく調整）
     if (!isAfterReserved) {
-      htmlContent += `<td style="text-align: center; padding: 12px 0;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '放課後')" style="background-color: #ffffff; border: none; font-size: 22px; cursor: pointer; padding: 0; width: 40px; height: 40px; line-height: 40px;">〇</button></td>`;
+      htmlContent += `<td style="text-align: center; padding: 12px 0;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '放課後')" style="color: #3a3737; background-color: #ffffff; border: none; font-size: 22px; cursor: pointer; padding: 0; width: 40px; height: 40px; line-height: 40px;">〇</button></td>`;
     } else {
       htmlContent += `<td style="color: #3a3737 !important; font-weight: bold; text-align: center; font-size: 20px; padding: 12px 0;">✕</td>`;
     }
