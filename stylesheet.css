@@ -447,6 +447,21 @@ h1 {
   }
   }
 
+  /* 画面横幅が1024px以上（PC）のとき */
+@media screen and (min-width: 1024px) {
+  
+  /* room-containerの中にある要素（*）のスクロールバーを消す */
+  .room-container *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .room-container * {
+    -ms-overflow-style: none !important;  /* Edge用 */
+    scrollbar-width: none !important;     /* Firefox用 */
+  }
+}
 
 
 
