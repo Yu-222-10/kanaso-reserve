@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateRoomTableStatus();
 });
 
-// 🎯 アコーディオンの〇✕マスをクリックした時に予約画面へ飛ばす命令
+// アコーディオンの〇✕マスをクリックした時に予約画面へ飛ばす命令
 function goReservation(roomNum, time) {
   // 今日の日付（判定用）
   const todayObj = new Date();

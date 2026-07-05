@@ -44,7 +44,7 @@ function displayHistory() {
         >
           キャンセル
         </button>
-      </td>
+      </td> 
     `;
 
     tbody.appendChild(tr);
