@@ -15,6 +15,9 @@ function displayHistory() {
   const reservationList =
     JSON.parse(localStorage.getItem("reservations")) || [];
 
+    //一時追加
+    alert(JSON.stringify(reservationList, null, 2));
+
   // データ無し
   if (reservationList.length === 0) {
     tbody.innerHTML = `
