@@ -69,20 +69,20 @@ function renderAvailableRooms() {
     const tr = document.createElement('tr');
     
     // ① 教室名のマス（全体調整に合わせてフォントサイズを18pxに拡大）
-    let htmlContent = `<td style="color: #3a3737 !important; font-weight: bold; text-align: center; font-size: 18px; padding: 12px 0;">${roomNum}</td>`;
+    let htmlContent = `<td class="res-room-name">${roomNum}</td>`;
 
-    // ② 昼休みのマス（外枠を消し、サイズを大きく調整）
+    // ② 昼休みのマス（CSSクラスに変更）
     if (!isLunchReserved) {
-      htmlContent += `<td style="text-align: center; padding: 12px 0;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '昼休み')">〇</button></td>`;
+      htmlContent += `<td class="res-maru-cell"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '昼休み')">〇</button></td>`;
     } else {
-      htmlContent += `<td style="color: #3a3737 !important; font-weight: bold; text-align: center; font-size: 20px; padding: 12px 0;">✕</td>`;
+      htmlContent += `<td class="res-batsu-cell">✕</td>`;
     }
 
-    // ③ 放課後のマス（外枠を消し、サイズを大きく調整）
+    // ③ 放課後のマス（CSSクラスに変更）
     if (!isAfterReserved) {
-      htmlContent += `<td style="text-align: center; padding: 12px 0;"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '放課後') ">〇</button></td>`;
+      htmlContent += `<td class="res-maru-cell"><button class="today-res-btn" onclick="goToReservePage('${roomNum}', '放課後')">〇</button></td>`;
     } else {
-      htmlContent += `<td style="color: #3a3737 !important; font-weight: bold; text-align: center; font-size: 20px; padding: 12px 0;">✕</td>`;
+      htmlContent += `<td class="res-batsu-cell">✕</td>`;
     }
 
     tr.innerHTML = htmlContent;

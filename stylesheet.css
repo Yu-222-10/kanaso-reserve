@@ -379,6 +379,18 @@ input[type="submit"]:active {
 }
 
 /*today html*/
+.res-room-name {
+  color: #7b7474 !important;
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+  padding: 12px 0;
+}
+/* 〇ボタンを囲むマスのスタイル */
+.res-maru-cell {
+  text-align: center;
+  padding: 12px 0;
+}
  .today-res-btn {
   color: #494747; 
   background-color: #ffffff; 
@@ -390,6 +402,13 @@ input[type="submit"]:active {
   height: 40px; 
   line-height: 40px;
  }
+ .res-batsu-cell {
+  color: #494747 !important;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+  padding: 12px 0;
+}
 
 
 /* タブレット向けレイアウト */
