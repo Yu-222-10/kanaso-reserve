@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function displayHistory() {
 
   const tbody = document.getElementById("reservation-list");
-
   if (!tbody) return;
 
   tbody.innerHTML = "";
@@ -15,8 +14,8 @@ function displayHistory() {
   const reservationList =
     JSON.parse(localStorage.getItem("reservations")) || [];
 
-    //一時追加
-    alert(JSON.stringify(reservationList, null, 2));
+  // 🔍 デバッグ（確認用）
+  console.log(reservationList);
 
   // データ無し
   if (reservationList.length === 0) {
@@ -27,7 +26,7 @@ function displayHistory() {
         </td>
       </tr>
     `;
-    return;   
+    return;
   }
 
   // 表示
@@ -43,11 +42,10 @@ function displayHistory() {
       <td>
         <button
           class="cancel-btn"
-          onclick="deleteReservation('${reservation.id}')"
-        >
+          onclick="deleteReservation('${reservation.id}')">
           キャンセル
         </button>
-      </td> 
+      </td>
     `;
 
     tbody.appendChild(tr);
@@ -57,9 +55,7 @@ function displayHistory() {
 // キャンセル
 function deleteReservation(id) {
 
-  if (!confirm("この予約をキャンセルしますか？")) {
-    return;
-  }
+  if (!confirm("この予約をキャンセルしますか？")) return;
 
   let reservationList =
     JSON.parse(localStorage.getItem("reservations")) || [];
@@ -67,10 +63,7 @@ function deleteReservation(id) {
   reservationList =
     reservationList.filter(res => res.id !== id);
 
-  localStorage.setItem(
-    "reservations",
-    JSON.stringify(reservationList)
-  );
+  localStorage.setItem("reservations", JSON.stringify(reservationList));
 
   alert("予約をキャンセルしました");
 
