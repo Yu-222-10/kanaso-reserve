@@ -16,13 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
     month = todayObj.getMonth() + 1;
     day = todayObj.getDate();
   }
-
+　
   const dateDisplay = document.getElementById("selected-date");
   if (dateDisplay) {
     dateDisplay.textContent = `${year}年${month}月${day}日の使用状況`;
   }
 
-  // 💾 ページが開かれたら、ローカルストレージの予約データをもとに〇✕を最新状態に書き換える
+  // ページが開かれたら、ローカルストレージの予約データをもとに〇✕を最新状態に書き換える
   updateRoomTableStatus();
 });
 

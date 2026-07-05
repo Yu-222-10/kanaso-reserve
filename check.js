@@ -24,7 +24,7 @@ function displayHistory() {
         </td>
       </tr>
     `;
-    return;
+    return;   
   }
 
   // 表示

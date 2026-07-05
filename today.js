@@ -88,7 +88,7 @@ function renderAvailableRooms() {
     tr.innerHTML = htmlContent;
     tbody.appendChild(tr); // 綺麗に整った1行をテーブルに合体
   }); 
-}
+}  
 
 // ボタンを押した時に安全に予約画面へジャンプする関数
 window.goToReservePage = function(roomNum, time) {
