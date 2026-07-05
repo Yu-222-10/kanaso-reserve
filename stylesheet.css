@@ -446,20 +446,23 @@ h1 {
   font-size: 20px;
   }
   }
-
-  /* 画面横幅が1024px以上（PC）のとき */
+/* 🖥️ PC（大画面）のときだけ適用 */
 @media screen and (min-width: 1024px) {
-  
-  /* room-containerの中にある要素（*）のスクロールバーを消す */
+
+  /* ① room-containerの「中にあるすべての要素」のスクロールバーを完全に消す */
+  .room-container * {
+    overflow: visible !important;        /* 👈 内側の箱単体でスクロールするのを根本から禁止する */
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  /* ② Chrome/Edge/Safariで、中にあるすべての要素のバーを非表示にする */
   .room-container *::-webkit-scrollbar {
     display: none !important;
     width: 0 !important;
     height: 0 !important;
-  }
-
-  .room-container * {
-    -ms-overflow-style: none !important;  /* Edge用 */
-    scrollbar-width: none !important;     /* Firefox用 */
   }
 }
 
