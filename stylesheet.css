@@ -183,12 +183,17 @@ input[type="text"] {
   color: #778ca3 !important;
 }
 
-.check td,
+
 .today td,
 .room td {
   padding: 10px;
   border-bottom: solid 1px #778ca3 !important;
-  
+}
+
+.check td {
+  padding: 10px;
+  border-bottom: solid 1px #778ca3 !important;
+  color: #262733;
 }
 
 .check td.available:hover,
