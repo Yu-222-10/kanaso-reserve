@@ -193,7 +193,7 @@ input[type="text"] {
 .check td {
   padding: 10px;
   border-bottom: solid 1px #778ca3 !important;
-  color: #262733;
+  color: #262733 !important;
 }
 
 .check td.available:hover,
