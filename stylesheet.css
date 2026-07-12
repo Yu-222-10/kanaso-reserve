@@ -24,6 +24,7 @@ html, body {
   box-shadow: 0 4px 16px rgba(0,0,0,0.05); /* 影 */
   text-align: center;
   height: auto;
+  box-sizing: border-box;
 }
 .c-container {
   width: 100% !important;
