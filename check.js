@@ -35,7 +35,21 @@ function displayHistory() {
     const tr = document.createElement("tr");
 
     tr.innerHTML = `
-      <td>${reservation.year}年<br>${reservation.month}月${reservation.day}日</td>
+      <td class="history-date">
+       <span class="pc-date">
+        ${reservation.year}年${reservation.month}月${reservation.day}日
+       </span>
+
+       <span class="tablet-date">
+        ${reservation.year}年<br>
+        ${reservation.month}月${reservation.day}日
+       </span>
+
+       <span class="mobile-date">
+        ${reservation.year}年<br>
+        ${reservation.month}/${reservation.day}
+       </span>
+      </td>
       <td>${reservation.room}</td>
       <td>${reservation.time}</td>
       <td>${reservation.group || ""}</td>

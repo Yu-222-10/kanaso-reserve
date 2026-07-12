@@ -202,6 +202,12 @@ input[type="text"] {
   background-color: #f0f7ff; /* マウスを乗せたときに少し青くして反応をわかりやすく */
 }
 
+/* 最初は全部非表示 */
+.tablet-date,
+.mobile-date{
+  display:none;
+}
+
 .room-js-text {
   color:#376992 ;   
   font-size: 14px;
@@ -425,6 +431,13 @@ input[type="submit"]:active {
   h2 {
     font-size: 21px;
   }
+    .pc-date{
+    display:none;
+  }
+
+  .tablet-date{
+    display:inline;
+  }
 }
 
 
@@ -476,6 +489,13 @@ h1 {
     padding: 6px;
   }
 
+  .tablet-date{
+    display:none;
+  }
+  .mobile-date{
+    display:inline;
+  }
+
   .cancel-btn {
     font-size: 12px;
     padding: 6px 8px;
@@ -500,6 +520,10 @@ h1 {
     width: 0 !important;
     height: 0 !important;
   }
+  
+  .pc-date{
+  display:inline;
+}
 }
 
 
