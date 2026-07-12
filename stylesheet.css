@@ -167,7 +167,7 @@ input[type="text"] {
 .check,
 .today,
 .room {
-  width: 90%;
+  width: 100%;
   border-collapse: collapse;
   text-align: center;
   border-spacing: 0;
@@ -440,8 +440,8 @@ h1 {
     font-size: 21px;
   }
   .container, .room-container {
-    padding-left: 10px;  /* 💡 完全に0にするか、好みに合わせて10pxくらいに */
-    padding-right: 10px;
+    padding-left: 5px;  /* 💡 完全に0にするか、好みに合わせて10pxくらいに */
+    padding-right: 5px;
     width: 100%;         /* 横幅いっぱいに広げる */
   }
 
@@ -467,6 +467,17 @@ h1 {
   }
  summary{
   font-size: 20px;
+  }
+
+    .check th,
+  .check td {
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .cancel-btn {
+    font-size: 12px;
+    padding: 6px 8px;
   }
   }
 /* PC（大画面）のときだけ適用 */
