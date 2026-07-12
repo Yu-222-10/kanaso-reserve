@@ -469,9 +469,9 @@ h1 {
   font-size: 20px;
   }
 
-    .check th,
+  .check th,
   .check td {
-    font-size: 14px;
+    font-size: 10px;
     padding: 6px;
   }
 
@@ -480,6 +480,7 @@ h1 {
     padding: 6px 8px;
   }
   }
+
 /* PC（大画面）のときだけ適用 */
 @media screen and (min-width: 1024px) {
 
